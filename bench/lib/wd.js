@@ -36,7 +36,8 @@ export class Session {
   async findAll(using, value) { return (await wd('POST', this.url('/elements'), { using, value })).map(e => e[ELEMENT]); }
   async source() { const t0 = performance.now(); const src = await wd('GET', this.url('/source')); return { src, ms: ms(t0) }; }
   attr(id, name) { return wd('GET', this.url(`/element/${id}/attribute/${name}`)); }
-  async fingerprint(id) { return (await Promise.all(['class', 'resource-id', 'text', 'content-desc', 'bounds'].map(a => this.attr(id, a)))).join('|'); }
+  // an empty attribute comes back as the string "null" for XPath hits and as "" for UiSelector hits
+  async fingerprint(id) { return (await Promise.all(['class', 'resource-id', 'text', 'content-desc', 'bounds'].map(a => this.attr(id, a)))).map(v => v == null || v === 'null' ? '' : v).join('|'); }
   settings() { return wd('GET', this.url('/appium/settings')); }
   close() { return wd('DELETE', this.url('')).catch(() => {}); }
 }
@@ -46,14 +47,20 @@ const adbAsync = (...a) => new Promise(r => execFile(ADB, a, { encoding: 'utf8' 
 
 // Force-stop and start the app in a mode; ready when the app logs its first draw, plus a quiet second.
 // The tree is not touched before the first timed lookup (no page source, no settle loop).
-export async function launch(extras = {}) {
+export async function launch(extras = {}, activity = '.MainActivity') {
   adb('logcat', '-c');
   const ex = Object.entries(extras).flatMap(([k, v]) => typeof v === 'number' ? ['--ei', k, String(v)] : ['--es', k, v]);
-  adb('shell', 'am', 'start', '-S', '-n', `${PKG}/.MainActivity`, ...ex);
+  adb('shell', 'am', 'start', '-S', '-n', `${PKG}/${activity}`, ...ex);
   const t0 = Date.now();
   for (;;) {
     const m = adb('logcat', '-d', '-s', 'ScaleLab:I').match(/built (\d+) ms, first draw (\d+) ms/);
-    if (m) { await sleep(1000); return { buildMs: Number(m[1]), firstDrawMs: Number(m[2]) }; }
+    if (m) {
+      await sleep(1000);
+      // a system dialog on top (e.g. "isn't responding" after a slow start) would become the tree
+      const focus = adb('shell', 'dumpsys', 'window').match(/mCurrentFocus=.*/)?.[0] || '';
+      if (!focus.includes(`${PKG}/`)) throw new Error(`app not in focus after launch: ${focus}`);
+      return { buildMs: Number(m[1]), firstDrawMs: Number(m[2]) };
+    }
     if (Date.now() - t0 > 120000) throw new Error(`app did not draw: ${JSON.stringify(extras)}`);
     await sleep(300);
   }

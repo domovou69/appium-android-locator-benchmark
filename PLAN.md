@@ -126,12 +126,20 @@ Kotlin, `minSdk` 26), one Activity that builds the tree programmatically from
 - Compose would be a separate phase (semantics merging, `testTagsAsResourceId`, lazy lists compose
   only visible items) — see questions.
 
-Background load (to be adjusted after the spike): by default UiAutomator2 drops nodes that are not
-visible to the user (`allowInvisibleElements=false`), so content below the fold, an off-screen
-drawer and off-screen pages may not count at all. The likely Android-shaped load that stays in the
-tree: fragments/screens stacked on top of each other with `add` instead of `replace` (overlapped
-views are still "visible to user"), a visible drawer overlay, a tab pager whose pages share the
-screen bounds. The spike decides which of these really count.
+Background load (after the spike): only views visible on screen are in the tree, so every group is a
+full-screen layer stacked under Checkout, as screens added to a back stack are — G2 two screens (+400),
+G3 a recommendations screen (+500), G4 three kept-alive tabs and an open drawer (+1000). Checkout is the
+top layer, so it is the **last** subtree in the page source: UiSelector, which stops at the first match,
+walks the whole background before it reaches any target. That is the realistic Android order and the
+unfavourable one for UiSelector.
+
+As built in stage 2 (`ScaleActivity`, `bench/make-scale.js`, `bench/count.js`):
+- page source counts 100 / 497 / 1000 / 1989 elements; targets at depth 8 (top), 39 (deep), 6 (end);
+  the depth screen shows markers down to level 60 (tree depth 70 = `snapshotMaxDepth`);
+- exact pixel sizes, single-line text, content padded by system-bar insets;
+- benchmark build = `assembleRelease` (not debuggable, signed with the debug key): the debug build
+  built the 2000-element screen in up to 15 s and answered first accessibility queries slowly;
+- all 30 cases valid at 100 and 2000 elements: every strategy returns the same single element.
 
 ## Differences from iOS (to confirm)
 

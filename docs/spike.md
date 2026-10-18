@@ -49,6 +49,14 @@ the app process building its accessibility nodes the first time they are asked f
 this once per freshly started screen, on whichever locator comes first, so it is not a property of
 the strategy.
 
+Follow-up in stage 2: the spike app was a **debug (debuggable) build**. With the non-debuggable
+ScaleLab build at 2000 elements the first lookup is only 0–15 % slower than the next ones, both after a
+process start and on a newly created screen in the same process (XPath 1380 / 1188 / 1178 ms,
+UiSelector 733 / 777 / 831 ms). The large first-lookup cost was the debuggable app answering its
+first accessibility queries slowly. The benchmark uses the non-debuggable build and records the build
+type; the untimed lookup after launch stays as a cheap guard. The spike's absolute times are from the
+debug build.
+
 ## 5. Accessibility cache
 
 With the default `deferAccessibilityCacheReset=false` the server resets the cache before each lookup.

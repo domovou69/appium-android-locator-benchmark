@@ -18,5 +18,10 @@ android {
         debug {
             isMinifyEnabled = false
         }
+        // the benchmark build: not debuggable (ART runs debuggable apps much slower), signed with the debug key
+        release {
+            isMinifyEnabled = false
+            signingConfig = signingConfigs.getByName("debug")
+        }
     }
 }
