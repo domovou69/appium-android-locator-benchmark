@@ -84,13 +84,16 @@ medians **without** the first lookup after each launch:
 
 All strategies returned the same element (attribute fingerprint) in every check.
 
-## Consequences for stages 2–4 (proposed, to confirm)
+## Consequences for stages 2–4 (agreed 2026-10-18)
 
 1. Background load = overlapping on-screen layers; content padded by system-bar insets.
-2. After each app launch: one untimed lookup of an unrelated element, then the timed ones; the
-   first-lookup cost is reported separately per size.
+2. After each app launch the runner waits for the screen like a test waits for its first element: one
+   untimed lookup of an unrelated element (the iOS runner's `settle` did the same with page source),
+   then the timed ones. The first-lookup cost is reported separately per size. Stage 2 also checks
+   whether it is paid once per app start or once per newly opened screen in the same process.
 3. Wait for the guest to settle (load average < 1.5) before each size; record guest load and the
-   host's power state per size; refuse to start on battery / Low Power Mode unless forced.
-4. More passes against the spread: 5 instead of 3 (median).
-5. Run the emulator benchmark at 2 and at 4 cores and report both; the ratio range is the honest
-   emulator result.
+   host's power state per size; never run on battery or with Low Power Mode (the runner refuses).
+4. 3 passes, median — as on iOS; the summary aggregates 30 cases, which absorbs single outliers.
+5. One emulator configuration: 4 cores (closer to a phone than 1–2). The 2-core result above goes
+   into the report's limits as "more vCPUs changed the emulator's numbers": emulator ms and ratios
+   are synthetic; the real-device run (stage 6, when a phone is available) gives the magnitude.

@@ -192,9 +192,14 @@ measurements" section.
 5. Emulator image: the installed Google Play API 37.0 image (`Medium_Phone`, 4 cores, 4 GB). If the
    stage 1 checks show background noise from Play services, switch to AOSP API 36 (773 MB, new AVD
    with consent).
-6. No real phone for now: emulator only; stage 6 postponed.
+6. No real phone for now: emulator first; stage 6 runs when the user has an Android phone, so the
+   report has both. Local runs (any Appium / OS version) are preferred over device clouds with fixed,
+   often outdated Appium–OS pairings.
 7. Downloads over the hotspot as is.
 8. All 30 cases keep 3 positions (top / deep / end). `id` and `accessibility id` are timed on the
    cases where they apply (shapes 1 and 7), which also cover the 3 positions.
 9. No settings-variants side table.
 10. Kotlin.
+11. After the spike (`docs/spike.md`, "Consequences"): background load = overlapping on-screen layers,
+    insets-padded content; one untimed lookup after each app start; wait for guest load < 1.5; never on
+    battery / Low Power Mode; 3 passes, median; 4 cores only.
