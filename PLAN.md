@@ -9,6 +9,17 @@ Why a gain is plausible: in the UiAutomator2 server, XPath serializes the whole 
 XML and evaluates the expression on it; UiSelector, `id` and `accessibility id` walk the
 `AccessibilityNodeInfo` tree natively and can stop at the first match. This is checked, not assumed.
 
+## Why / what next
+
+On iOS ([xpath-to-class-chain](https://github.com/domovou69/xpath-to-class-chain)) class chain was
+22–29 % faster than XPath at 100–2000 elements (70 → 676 ms per lookup, iPhone 13 Pro Max). For Android
+no controlled measurement of XPath vs native strategies was found (only blog posts without a method),
+and no ready XPath → UiSelector converter (only a parser inside the Python framework Shadowstep).
+
+- Noticeable gain → next project: XPath → `-android uiautomator` converter with the iOS discipline
+  (exact → convert, close → convert with a warning, the rest → skip with a reason).
+- No gain → publish the result (dev.to article), maybe a cross-platform brittle-locator linter.
+
 ## Stages
 
 Times are wall clock; "window" = share of one 5-hour usage window spent by Claude on the stage
@@ -17,7 +28,7 @@ Times are wall clock; "window" = share of one 5-hour usage window spent by Claud
 | # | Stage | Output | Wall time | Window |
 |---|---|---|---|---|
 | 0 | Environment: Android Studio (installed by the user) with its SDK, bundled JDK, emulator and system image; one AVD; Appium + uiautomator2 driver as devDependencies; pin versions | `docs/environment.md` with exact versions | ~20 min + downloads | ~5 % |
-| 1 | Feasibility spike: a throwaway app with ~2000 views; check what is in the tree with default settings (off-screen, overlapped, other fragments), `snapshotMaxDepth`, page-source time, `waitForIdleTimeout`, element identity | go/no-go notes in `docs/spike.md`; decides where the background load lives | ~45 min | ~10 % |
+| 1 | Feasibility spike: a throwaway app with ~2000 views; check what is in the tree with default settings (off-screen, overlapped, other fragments), `snapshotMaxDepth`, page-source time, `waitForIdleTimeout`, element identity; emulator validity check (see below) | go/no-go notes in `docs/spike.md`; decides where the background load lives | ~45 min | ~10 % |
 | 2 | ScaleLab app + `make-scale.js` port: same 100 targets, background load to 100/500/1000/2000, deep branch, `scale-deep` screen | `app/`, `bench/make-scale.js`, `bench/scale-cases.json`; element counts within ±2 % | 60–90 min | ~15–20 % |
 | 3 | Runner `bench/scale.js` (standalone, plain WebDriver HTTP like the iOS one): validation, 3 cold passes, median, alternating order, `--resume`, `--count`, `--deep`, host state, `caffeinate` | runner + smoke run at 100 elements | ~60 min | ~15 % |
 | 4 | Emulator run: 4 sizes × 30 cases × 2–4 strategies × 3 passes, in the background, chunked per size | `results/results-scale-emulator.json` | 30–60 min | ~5 % |
@@ -47,6 +58,28 @@ emulator already shows no gain or a large one; stages 5–6 then only confirm.
   AVD name and image, all UiAutomator2 settings in effect, host CPU, memory, macOS, power (AC/battery),
   Low Power Mode.
 
+## Emulator validity check (stage 1)
+
+Question: does the emulator show the real cost difference between strategies, or is it CPU-bound and
+noisy? A `findElement` runs on one thread of the UiAutomator2 server (plus the app's and
+`system_server`'s accessibility work), so one lookup uses about one core; extra vCPUs only keep the
+background (GC, system services, Play services) off that core. Checks:
+
+1. vCPUs: the AVD gets 4 cores (Studio created it with `hw.cpu.ncore=1`, which puts the app, the
+   server and the system on one core).
+2. Load during lookups: guest `/proc/loadavg` and `top -b -n 1` (per-process CPU), host CPU of
+   `qemu-system-aarch64`. Passes if no core is pinned at 100 % between lookups and the host is not
+   saturated.
+3. Transport baseline: time of a trivial request (`GET /status`) and of a `findElement` that misses on
+   a tiny tree; this fixed cost (HTTP + adb forward) is reported, so ms savings are not diluted unseen.
+4. Stability: 10 repeats of one XPath and one UiSelector lookup at 100 and 2000 elements; spread
+   (min/median/max) must be well below the difference between strategies.
+5. Core-count sensitivity: the same 4 lookups with 2 and 4 cores; if the XPath/UiSelector ratio holds,
+   the difference is the algorithm, not CPU contention.
+
+Limit noted in the report: M1 Pro cores are faster than most phones' cores, so absolute ms are lower
+than on a phone; the ratio is what transfers. A real phone (stage 6) confirms it.
+
 ## Locator shapes (draft — no Android corpus yet)
 
 The iOS shapes mapped to Android attributes (`resource-id`, `text`, `content-desc`, `class`).
@@ -69,6 +102,8 @@ Notes: `childSelector` matches descendants, not only children — validation cat
 `instance()` is 0-based. `following-sibling` stays XPath (as on iOS).
 
 ## App
+
+Elements use realistic shop names (as on iOS); one deep branch.
 
 Recommendation: **one Android View app, no Compose, no AndroidX** — minimal Gradle project (AGP,
 Kotlin, `minSdk` 26), one Activity that builds the tree programmatically from
@@ -123,6 +158,17 @@ Android Studio is installed with its default SDK set (the user's choice; downloa
 hotspot). Use what it installed instead of downloading more: its bundled JDK (`JAVA_HOME` = Studio's
 `jbr`), `platform-tools`, `emulator`, the SDK platform and, if the setup wizard created one with an AOSP
 image, its AVD; otherwise one AVD is created (name recorded here) on the AOSP image. Any extra download (another image, build-tools) is announced with its size first.
+
+Found on 2026-10-18: Android Studio with SDK in `~/Library/Android/sdk` — platform `android-37.0`,
+build-tools 36.0.0, emulator 37.2.12, platform-tools 37.0.1, JBR OpenJDK 25.0.3 (not on `PATH`; `adb` /
+`emulator` not on `PATH` either). One AVD `Medium_Phone` (API 37.0, **Google Play** image, arm64,
+1080×2400, `hw.cpu.ncore=1`, 2 GB RAM). Still missing: Node deps (Appium, uiautomator2 driver),
+Gradle/AGP/Kotlin for the app (downloaded by the first build).
+
+## Report
+
+Savings always in % and in ms; clear table headers; no obvious comments; a "Limits of these
+measurements" section.
 
 ## Decisions (2026-10-18)
 
