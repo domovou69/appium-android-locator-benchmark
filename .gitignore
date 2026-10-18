@@ -1,3 +1,7 @@
 node_modules/
 .DS_Store
 *.log
+app/.gradle/
+app/build/
+app/.kotlin/
+local.properties

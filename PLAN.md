@@ -43,7 +43,9 @@ emulator already shows no gain or a large one; stages 5–6 then only confirm.
 ## What we measure
 
 - Per lookup: one cold `findElement`, no warm-up, strategy order rotating per case and per pass,
-  3 passes, median per case and strategy. Savings always shown in % and in ms.
+  3 passes, median per case and strategy. "Cold" includes the accessibility cache: no timed lookup
+  may hit an element already fetched in the same app run (how this is enforced follows the cache
+  check of stage 1). Savings always shown in % and in ms.
 - Strategies per case:
   - `xpath` vs `-android uiautomator` — all 30 cases;
   - `id` — only cases that select by exact resource-id;
@@ -72,10 +74,18 @@ background (GC, system services, Play services) off that core. Checks:
    saturated.
 3. Transport baseline: time of a trivial request (`GET /status`) and of a `findElement` that misses on
    a tiny tree; this fixed cost (HTTP + adb forward) is reported, so ms savings are not diluted unseen.
-4. Stability: 10 repeats of one XPath and one UiSelector lookup at 100 and 2000 elements; spread
-   (min/median/max) must be well below the difference between strategies.
-5. Core-count sensitivity: the same 4 lookups with 2 and 4 cores; if the XPath/UiSelector ratio holds,
-   the difference is the algorithm, not CPU contention.
+4. Cache effect: Android caches `AccessibilityNodeInfo`s on the client side (`AccessibilityCache` in
+   the UiAutomator2 server process), so a repeated lookup of the same element may be faster, unlike a
+   real test where most actions hit new elements. Measured: the same lookup 1st vs 2nd–5th time, and a
+   2nd strategy right after the 1st on the same target. If repeats are faster, every timed lookup must
+   be cold: the app is restarted (`am force-stop` + launch, new window = empty cache) before each
+   pass, and inside a pass each target is looked up by one strategy only, so strategies of a case run
+   in different passes or after a cache reset (`UiAutomation.clearCache()` if reachable from the server).
+5. Stability on fresh targets: 10 different targets of the same shape and position at 100 and 2000
+   elements, each looked up once, cold; spread (min/median/max) must be well below the difference
+   between strategies.
+6. Core-count sensitivity: the same cold lookups with 2 and 4 cores; if the XPath/UiSelector ratio
+   holds, the difference is the algorithm, not CPU contention.
 
 Limit noted in the report: M1 Pro cores are faster than most phones' cores, so absolute ms are lower
 than on a phone; the ratio is what transfers. A real phone (stage 6) confirms it.
@@ -160,10 +170,12 @@ hotspot). Use what it installed instead of downloading more: its bundled JDK (`J
 image, its AVD; otherwise one AVD is created (name recorded here) on the AOSP image. Any extra download (another image, build-tools) is announced with its size first.
 
 Found on 2026-10-18: Android Studio with SDK in `~/Library/Android/sdk` — platform `android-37.0`,
-build-tools 36.0.0, emulator 37.2.12, platform-tools 37.0.1, JBR OpenJDK 25.0.3 (not on `PATH`; `adb` /
-`emulator` not on `PATH` either). One AVD `Medium_Phone` (API 37.0, **Google Play** image, arm64,
-1080×2400, `hw.cpu.ncore=1`, 2 GB RAM). Still missing: Node deps (Appium, uiautomator2 driver),
-Gradle/AGP/Kotlin for the app (downloaded by the first build).
+build-tools 36.0.0, emulator 37.2.12, platform-tools 37.0.1, JBR OpenJDK 25.0.3. One AVD
+`Medium_Phone` (API 37.0, **Google Play** image, arm64, 1080×2400; created with `hw.cpu.ncore=1` and
+2 GB RAM, changed to 4 cores / 4 GB, original config kept as `config.ini.bak-2026-10-18`).
+`ANDROID_HOME`, `JAVA_HOME` (Studio's JBR), `platform-tools` and `emulator` added to `PATH` in `~/.zshrc`.
+No AOSP (`default`) image exists for API 37; the newest is API 36 (773 MB). Pinned versions:
+`docs/environment.md`.
 
 ## Report
 
@@ -177,8 +189,9 @@ measurements" section.
 3. Default UiAutomator2 settings only; background load made of nodes visible to the user. No
    `allowInvisibleElements` variant.
 4. Sizes 100/500/1000/2000, as on iOS.
-5. Emulator image: AOSP (`default`) arm64. Android Studio's default image is used only if it is already AOSP;
-   otherwise the AOSP image (~1–1.5 GB) is downloaded after a size/time estimate.
+5. Emulator image: the installed Google Play API 37.0 image (`Medium_Phone`, 4 cores, 4 GB). If the
+   stage 1 checks show background noise from Play services, switch to AOSP API 36 (773 MB, new AVD
+   with consent).
 6. No real phone for now: emulator only; stage 6 postponed.
 7. Downloads over the hotspot as is.
 8. All 30 cases keep 3 positions (top / deep / end). `id` and `accessibility id` are timed on the
