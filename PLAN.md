@@ -43,7 +43,9 @@ emulator already shows no gain or a large one; stages 5–6 then only confirm.
 ## What we measure
 
 - Per lookup: one cold `findElement`, no warm-up, strategy order rotating per case and per pass,
-  3 passes, median per case and strategy. Savings always shown in % and in ms.
+  3 passes, median per case and strategy. "Cold" includes the accessibility cache: no timed lookup
+  may hit an element already fetched in the same app run (how this is enforced follows the cache
+  check of stage 1). Savings always shown in % and in ms.
 - Strategies per case:
   - `xpath` vs `-android uiautomator` — all 30 cases;
   - `id` — only cases that select by exact resource-id;
@@ -72,10 +74,18 @@ background (GC, system services, Play services) off that core. Checks:
    saturated.
 3. Transport baseline: time of a trivial request (`GET /status`) and of a `findElement` that misses on
    a tiny tree; this fixed cost (HTTP + adb forward) is reported, so ms savings are not diluted unseen.
-4. Stability: 10 repeats of one XPath and one UiSelector lookup at 100 and 2000 elements; spread
-   (min/median/max) must be well below the difference between strategies.
-5. Core-count sensitivity: the same 4 lookups with 2 and 4 cores; if the XPath/UiSelector ratio holds,
-   the difference is the algorithm, not CPU contention.
+4. Cache effect: Android caches `AccessibilityNodeInfo`s on the client side (`AccessibilityCache` in
+   the UiAutomator2 server process), so a repeated lookup of the same element may be faster, unlike a
+   real test where most actions hit new elements. Measured: the same lookup 1st vs 2nd–5th time, and a
+   2nd strategy right after the 1st on the same target. If repeats are faster, every timed lookup must
+   be cold: the app is restarted (`am force-stop` + launch, new window = empty cache) before each
+   pass, and inside a pass each target is looked up by one strategy only, so strategies of a case run
+   in different passes or after a cache reset (`UiAutomation.clearCache()` if reachable from the server).
+5. Stability on fresh targets: 10 different targets of the same shape and position at 100 and 2000
+   elements, each looked up once, cold; spread (min/median/max) must be well below the difference
+   between strategies.
+6. Core-count sensitivity: the same cold lookups with 2 and 4 cores; if the XPath/UiSelector ratio
+   holds, the difference is the algorithm, not CPU contention.
 
 Limit noted in the report: M1 Pro cores are faster than most phones' cores, so absolute ms are lower
 than on a phone; the ratio is what transfers. A real phone (stage 6) confirms it.
@@ -116,12 +126,20 @@ Kotlin, `minSdk` 26), one Activity that builds the tree programmatically from
 - Compose would be a separate phase (semantics merging, `testTagsAsResourceId`, lazy lists compose
   only visible items) — see questions.
 
-Background load (to be adjusted after the spike): by default UiAutomator2 drops nodes that are not
-visible to the user (`allowInvisibleElements=false`), so content below the fold, an off-screen
-drawer and off-screen pages may not count at all. The likely Android-shaped load that stays in the
-tree: fragments/screens stacked on top of each other with `add` instead of `replace` (overlapped
-views are still "visible to user"), a visible drawer overlay, a tab pager whose pages share the
-screen bounds. The spike decides which of these really count.
+Background load (after the spike): only views visible on screen are in the tree, so every group is a
+full-screen layer stacked under Checkout, as screens added to a back stack are — G2 two screens (+400),
+G3 a recommendations screen (+500), G4 three kept-alive tabs and an open drawer (+1000). Checkout is the
+top layer, so it is the **last** subtree in the page source: UiSelector, which stops at the first match,
+walks the whole background before it reaches any target. That is the realistic Android order and the
+unfavourable one for UiSelector.
+
+As built in stage 2 (`ScaleActivity`, `bench/make-scale.js`, `bench/count.js`):
+- page source counts 100 / 497 / 1000 / 1989 elements; targets at depth 8 (top), 39 (deep), 6 (end);
+  the depth screen shows markers down to level 60 (tree depth 70 = `snapshotMaxDepth`);
+- exact pixel sizes, single-line text, content padded by system-bar insets;
+- benchmark build = `assembleRelease` (not debuggable, signed with the debug key): the debug build
+  built the 2000-element screen in up to 15 s and answered first accessibility queries slowly;
+- all 30 cases valid at 100 and 2000 elements: every strategy returns the same single element.
 
 ## Differences from iOS (to confirm)
 
@@ -160,10 +178,12 @@ hotspot). Use what it installed instead of downloading more: its bundled JDK (`J
 image, its AVD; otherwise one AVD is created (name recorded here) on the AOSP image. Any extra download (another image, build-tools) is announced with its size first.
 
 Found on 2026-10-18: Android Studio with SDK in `~/Library/Android/sdk` — platform `android-37.0`,
-build-tools 36.0.0, emulator 37.2.12, platform-tools 37.0.1, JBR OpenJDK 25.0.3 (not on `PATH`; `adb` /
-`emulator` not on `PATH` either). One AVD `Medium_Phone` (API 37.0, **Google Play** image, arm64,
-1080×2400, `hw.cpu.ncore=1`, 2 GB RAM). Still missing: Node deps (Appium, uiautomator2 driver),
-Gradle/AGP/Kotlin for the app (downloaded by the first build).
+build-tools 36.0.0, emulator 37.2.12, platform-tools 37.0.1, JBR OpenJDK 25.0.3. One AVD
+`Medium_Phone` (API 37.0, **Google Play** image, arm64, 1080×2400; created with `hw.cpu.ncore=1` and
+2 GB RAM, changed to 4 cores / 4 GB, original config kept as `config.ini.bak-2026-10-18`).
+`ANDROID_HOME`, `JAVA_HOME` (Studio's JBR), `platform-tools` and `emulator` added to `PATH` in `~/.zshrc`.
+No AOSP (`default`) image exists for API 37; the newest is API 36 (773 MB). Pinned versions:
+`docs/environment.md`.
 
 ## Report
 
@@ -177,11 +197,17 @@ measurements" section.
 3. Default UiAutomator2 settings only; background load made of nodes visible to the user. No
    `allowInvisibleElements` variant.
 4. Sizes 100/500/1000/2000, as on iOS.
-5. Emulator image: AOSP (`default`) arm64. Android Studio's default image is used only if it is already AOSP;
-   otherwise the AOSP image (~1–1.5 GB) is downloaded after a size/time estimate.
-6. No real phone for now: emulator only; stage 6 postponed.
+5. Emulator image: the installed Google Play API 37.0 image (`Medium_Phone`, 4 cores, 4 GB). If the
+   stage 1 checks show background noise from Play services, switch to AOSP API 36 (773 MB, new AVD
+   with consent).
+6. No real phone for now: emulator first; stage 6 runs when the user has an Android phone, so the
+   report has both. Local runs (any Appium / OS version) are preferred over device clouds with fixed,
+   often outdated Appium–OS pairings.
 7. Downloads over the hotspot as is.
 8. All 30 cases keep 3 positions (top / deep / end). `id` and `accessibility id` are timed on the
    cases where they apply (shapes 1 and 7), which also cover the 3 positions.
 9. No settings-variants side table.
 10. Kotlin.
+11. After the spike (`docs/spike.md`, "Consequences"): background load = overlapping on-screen layers,
+    insets-padded content; one untimed lookup after each app start; wait for guest load < 1.5; never on
+    battery / Low Power Mode; 3 passes, median; 4 cores only.

@@ -18,4 +18,3 @@ node make-scale-chart.js results-scale-mine.json results-scale-device-mine.json 
 - Each size records the Mac's power state (`host`). On battery with Low Power Mode, lookups on the simulator were 14–16 % slower on an M1 Pro; the XPath/chain savings were the same.
 - Page sources are read without the `visible` attribute (`pageSourceExcludedAttributes`, switched on only around source calls). With it, one page source took 53 s at 1000 elements.
 - Before timing, XPath and chain must return the same single element; a case that fails is printed as `INVALID` and not timed. Many `INVALID` at once with `no such element` usually means the USB tunnel dropped: re-run with `--resume`.
-

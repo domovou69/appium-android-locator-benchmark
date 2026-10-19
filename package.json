@@ -1,0 +1,22 @@
+{
+  "name": "appium-android-locator-benchmark",
+  "version": "0.0.0",
+  "private": true,
+  "description": "Appium Android (UiAutomator2) locator benchmark: XPath vs UiSelector, id and accessibility id",
+  "license": "MIT",
+  "type": "module",
+  "engines": {
+    "node": ">=20"
+  },
+  "scripts": {
+    "appium": "appium --port 4723",
+    "doctor": "appium driver doctor uiautomator2"
+  },
+  "devDependencies": {
+    "appium": "3.8.0",
+    "appium-uiautomator2-driver": "8.7.0"
+  },
+  "allowScripts": {
+    "appium": false
+  }
+}

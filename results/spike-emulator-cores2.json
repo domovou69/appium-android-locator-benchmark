@@ -1,0 +1,601 @@
+{
+ "date": "2026-10-18",
+ "tag": "cores2",
+ "host": {
+  "cpu": "Apple M1 Pro",
+  "memoryGB": 16,
+  "macOS": "26.6.2",
+  "power": "AC",
+  "lowPowerMode": false
+ },
+ "device": {
+  "model": "sdk_gphone64_arm64",
+  "android": "17",
+  "sdk": "37",
+  "fingerprint": "google/sdk_gphone64_arm64/emu64a:17/CE2A.260420.019/15611780:user/release-keys",
+  "cores": 2,
+  "avd": "Medium_Phone_API_37.0"
+ },
+ "versions": {
+  "uiautomator2Server": null,
+  "platformVersion": "17",
+  "deviceApiLevel": 37
+ },
+ "settings": {
+  "ignoreUnimportantViews": false,
+  "allowInvisibleElements": false,
+  "includeExtraRenderingInfo": false,
+  "elementResponseAttributes": "name,text",
+  "snapshotMaxDepth": 70,
+  "includeA11yActionsInPageSource": false,
+  "mjpegBilinearFiltering": false,
+  "waitForSelectorTimeout": 10000,
+  "serverPort": 6790,
+  "simpleBoundsCalculation": false,
+  "mapTestTagToResourceId": false,
+  "enableNotificationListener": true,
+  "limitXPathContextScope": true,
+  "includeExtrasInPageSource": false,
+  "deferAccessibilityCacheReset": false,
+  "normalizeTagNames": false,
+  "trackScrollEvents": true,
+  "scrollAcknowledgmentTimeout": 200,
+  "enableTopmostWindowFromActivePackage": false,
+  "enableMultiWindows": false,
+  "useResourcesForOrientationDetection": false,
+  "currentDisplayId": 0,
+  "shouldUseCompactResponses": true,
+  "wakeLockTimeout": 86398767,
+  "shutdownOnPowerDisconnect": true,
+  "mjpegServerPort": 7810,
+  "mjpegScalingFactor": 50,
+  "alwaysTraversableViewClasses": "",
+  "disableIdLocatorAutocompletion": false,
+  "enforceXPath1": false,
+  "actionAcknowledgmentTimeout": 3000,
+  "mjpegServerScreenshotQuality": 50,
+  "keyInjectionDelay": 0,
+  "waitForIdleTimeout": 10000,
+  "mjpegServerFramerate": 10
+ },
+ "stability": [
+  {
+   "n": 100,
+   "ms": {
+    "xpath": [
+     304,
+     79.8,
+     75.3,
+     74.9,
+     87.6,
+     67,
+     72,
+     76.3,
+     79.4,
+     93.1,
+     233.6,
+     75.9,
+     64.6,
+     77,
+     66.4,
+     60.9,
+     66.2,
+     66.8,
+     73.3,
+     65.3
+    ],
+    "ui": [
+     81.8,
+     46,
+     33.7,
+     41.8,
+     45.3,
+     59.1,
+     41.5,
+     45.8,
+     44.9,
+     45.5,
+     82,
+     36.6,
+     35.5,
+     33.2,
+     37.8,
+     36.8,
+     35.9,
+     35.9,
+     38.2,
+     54.9
+    ],
+    "id": [
+     85.5,
+     41.1,
+     42.2,
+     65,
+     43.3,
+     47.7,
+     61.5,
+     49,
+     43.1,
+     45.9,
+     96.7,
+     38.7,
+     37.4,
+     38,
+     38.8,
+     55,
+     39.4,
+     46.2,
+     43.7,
+     42.7
+    ]
+   },
+   "launches": [
+    {
+     "buildMs": 191,
+     "firstDrawMs": 313
+    },
+    {
+     "buildMs": 220,
+     "firstDrawMs": 435
+    },
+    {
+     "buildMs": 178,
+     "firstDrawMs": 415
+    },
+    {
+     "buildMs": 135,
+     "firstDrawMs": 323
+    },
+    {
+     "buildMs": 202,
+     "firstDrawMs": 373
+    },
+    {
+     "buildMs": 97,
+     "firstDrawMs": 443
+    }
+   ],
+   "sameElement": true,
+   "spread": {
+    "xpath": {
+     "min": 60.9,
+     "median": 75.1,
+     "max": 304,
+     "n": 20
+    },
+    "ui": {
+     "min": 33.2,
+     "median": 41.7,
+     "max": 82,
+     "n": 20
+    },
+    "id": {
+     "min": 37.4,
+     "median": 43.5,
+     "max": 96.7,
+     "n": 20
+    }
+   }
+  },
+  {
+   "n": 2000,
+   "ms": {
+    "xpath": [
+     1401.9,
+     639.4,
+     656.3,
+     1243.2,
+     636,
+     604.2,
+     626.3,
+     588.9,
+     1093.9,
+     469.7,
+     490.1,
+     1285.8,
+     1105.4,
+     507,
+     527.7,
+     540.9,
+     984.6,
+     476.2,
+     532.4,
+     1045.2
+    ],
+    "ui": [
+     317.2,
+     378,
+     379.9,
+     1360.7,
+     324,
+     327.3,
+     332.1,
+     347.4,
+     344.1,
+     355.5,
+     954.7,
+     345.6,
+     361.8,
+     338.7,
+     357.7,
+     340.4,
+     969.5,
+     315.6,
+     328.2,
+     296.4
+    ],
+    "id": [
+     483.2,
+     346.6,
+     1014.3,
+     366.6,
+     342,
+     965.1,
+     337.1,
+     376.3,
+     368.8,
+     331.9,
+     460.6,
+     347,
+     342.8,
+     346.1,
+     372.9,
+     455.7,
+     378.4,
+     914.2,
+     363.4,
+     359.1
+    ]
+   },
+   "launches": [
+    {
+     "buildMs": 501,
+     "firstDrawMs": 816
+    },
+    {
+     "buildMs": 740,
+     "firstDrawMs": 1022
+    },
+    {
+     "buildMs": 775,
+     "firstDrawMs": 1099
+    },
+    {
+     "buildMs": 887,
+     "firstDrawMs": 1152
+    },
+    {
+     "buildMs": 660,
+     "firstDrawMs": 986
+    },
+    {
+     "buildMs": 849,
+     "firstDrawMs": 1127
+    }
+   ],
+   "sameElement": true,
+   "spread": {
+    "xpath": {
+     "min": 469.7,
+     "median": 631.2,
+     "max": 1401.9,
+     "n": 20
+    },
+    "ui": {
+     "min": 296.4,
+     "median": 344.9,
+     "max": 1360.7,
+     "n": 20
+    },
+    "id": {
+     "min": 331.9,
+     "median": 367.7,
+     "max": 1014.3,
+     "n": 20
+    }
+   }
+  }
+ ],
+ "load": {
+  "samples": [
+   {
+    "coreBusy": [
+     70.3,
+     63.8
+    ],
+    "load1": 1.25,
+    "qemuHostCpu": 209.4
+   },
+   {
+    "coreBusy": [
+     77.6,
+     73
+    ],
+    "load1": 1.25,
+    "qemuHostCpu": 679.8
+   },
+   {
+    "coreBusy": [
+     74.1,
+     69.1
+    ],
+    "load1": 1.23,
+    "qemuHostCpu": 554.3
+   },
+   {
+    "coreBusy": [
+     75.4,
+     73.6
+    ],
+    "load1": 1.23,
+    "qemuHostCpu": 165.7
+   },
+   {
+    "coreBusy": [
+     86.8,
+     86
+    ],
+    "load1": 1.23,
+    "qemuHostCpu": 657
+   },
+   {
+    "coreBusy": [
+     69.6,
+     64.1
+    ],
+    "load1": 1.21,
+    "qemuHostCpu": 734.3
+   },
+   {
+    "coreBusy": [
+     67.8,
+     69.4
+    ],
+    "load1": 1.21,
+    "qemuHostCpu": 624.7
+   },
+   {
+    "coreBusy": [
+     77.2,
+     73.8
+    ],
+    "load1": 1.43,
+    "qemuHostCpu": 204.4
+   },
+   {
+    "coreBusy": [
+     71.8,
+     75.6
+    ],
+    "load1": 1.43,
+    "qemuHostCpu": 605.2
+   },
+   {
+    "coreBusy": [
+     73,
+     64
+    ],
+    "load1": 1.32,
+    "qemuHostCpu": 193.1
+   },
+   {
+    "coreBusy": [
+     53.8,
+     49.7
+    ],
+    "load1": 1.32,
+    "qemuHostCpu": 119.9
+   },
+   {
+    "coreBusy": [
+     44.2,
+     59.4
+    ],
+    "load1": 1.32,
+    "qemuHostCpu": 118.9
+   },
+   {
+    "coreBusy": [
+     49.2,
+     63.9
+    ],
+    "load1": 1.29,
+    "qemuHostCpu": 121.8
+   },
+   {
+    "coreBusy": [
+     65.9,
+     59.9
+    ],
+    "load1": 1.29,
+    "qemuHostCpu": 515.8
+   },
+   {
+    "coreBusy": [
+     92.1,
+     93.7
+    ],
+    "load1": 1.35,
+    "qemuHostCpu": 677.5
+   },
+   {
+    "coreBusy": [
+     37,
+     41.7
+    ],
+    "load1": 1.35,
+    "qemuHostCpu": 72
+   },
+   {
+    "coreBusy": [
+     46.1,
+     43
+    ],
+    "load1": 1.35,
+    "qemuHostCpu": 119.5
+   },
+   {
+    "coreBusy": [
+     68.3,
+     65.7
+    ],
+    "load1": 1.24,
+    "qemuHostCpu": 771.8
+   },
+   {
+    "coreBusy": [
+     74.5,
+     80.3
+    ],
+    "load1": 1.24,
+    "qemuHostCpu": 393.1
+   },
+   {
+    "coreBusy": [
+     51.5,
+     47.4
+    ],
+    "load1": 1.14,
+    "qemuHostCpu": 116.4
+   },
+   {
+    "coreBusy": [
+     43.7,
+     45
+    ],
+    "load1": 1.14,
+    "qemuHostCpu": 116.7
+   },
+   {
+    "coreBusy": [
+     75.5,
+     75.4
+    ],
+    "load1": 2.09,
+    "qemuHostCpu": 737.3
+   },
+   {
+    "coreBusy": [
+     75.5,
+     82.2
+    ],
+    "load1": 2.09,
+    "qemuHostCpu": 363.3
+   },
+   {
+    "coreBusy": [
+     52.3,
+     53.3
+    ],
+    "load1": 2.09,
+    "qemuHostCpu": 120.6
+   },
+   {
+    "coreBusy": [
+     49.5,
+     44.4
+    ],
+    "load1": 2,
+    "qemuHostCpu": 116.8
+   },
+   {
+    "coreBusy": [
+     89.4,
+     88.3
+    ],
+    "load1": 2,
+    "qemuHostCpu": 428.2
+   },
+   {
+    "coreBusy": [
+     51.9,
+     36.7
+    ],
+    "load1": 1.84,
+    "qemuHostCpu": 107.4
+   },
+   {
+    "coreBusy": [
+     47.9,
+     47.7
+    ],
+    "load1": 1.84,
+    "qemuHostCpu": 109.9
+   },
+   {
+    "coreBusy": [
+     57.1,
+     56.5
+    ],
+    "load1": 1.84,
+    "qemuHostCpu": 590.5
+   },
+   {
+    "coreBusy": [
+     93.8,
+     91.6
+    ],
+    "load1": 2.9,
+    "qemuHostCpu": 628.7
+   },
+   {
+    "coreBusy": [
+     54.5,
+     54.5
+    ],
+    "load1": 2.9,
+    "qemuHostCpu": 117.3
+   },
+   {
+    "coreBusy": [
+     54.9,
+     56
+    ],
+    "load1": 2.82,
+    "qemuHostCpu": 137.9
+   },
+   {
+    "coreBusy": [
+     71.8,
+     66
+    ],
+    "load1": 2.82,
+    "qemuHostCpu": 159.7
+   },
+   {
+    "coreBusy": [
+     56,
+     58.9
+    ],
+    "load1": 2.82,
+    "qemuHostCpu": 125.2
+   }
+  ],
+  "coreBusy": {
+   "min": 36.7,
+   "median": 64.9,
+   "max": 93.8,
+   "n": 68
+  },
+  "maxCoreBusy": 93.8,
+  "load1": {
+   "min": 1.1,
+   "median": 1.4,
+   "max": 2.9,
+   "n": 34
+  },
+  "qemuHostCpu": {
+   "min": 72,
+   "median": 198.8,
+   "max": 771.8,
+   "n": 34
+  }
+ },
+ "hostAtEnd": {
+  "cpu": "Apple M1 Pro",
+  "memoryGB": 16,
+  "macOS": "26.6.2",
+  "power": "AC",
+  "lowPowerMode": false
+ }
+}
