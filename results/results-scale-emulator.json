@@ -1,0 +1,4198 @@
+{
+ "method": "3 passes, median; each pass a fresh app start + one untimed ready lookup, then one findElement per case and strategy, strategy order rotating per case and pass",
+ "env": {
+  "appium": "3.8.0",
+  "uiautomator2Driver": "8.7.0",
+  "uiautomator2Server": "10.6.6",
+  "device": {
+   "model": "Android SDK built for arm64",
+   "android": "16",
+   "sdk": "36",
+   "fingerprint": "Android/sdk_phone64_arm64/emu64a:16/BE2A.250530.026.D1/13818094:userdebug/test-keys",
+   "cores": 4,
+   "avd": "AOSP_API_36"
+  },
+  "emulator": "-headless -avd AOSP_API_36 -no-window -no-snapshot-load -no-boot-anim -no-audio",
+  "app": {
+   "type": "release",
+   "versionName": "0.1"
+  },
+  "settings": {
+   "ignoreUnimportantViews": false,
+   "allowInvisibleElements": false,
+   "includeExtraRenderingInfo": false,
+   "elementResponseAttributes": "name,text",
+   "snapshotMaxDepth": 70,
+   "includeA11yActionsInPageSource": false,
+   "mjpegBilinearFiltering": false,
+   "waitForSelectorTimeout": 10000,
+   "serverPort": 6790,
+   "simpleBoundsCalculation": false,
+   "mapTestTagToResourceId": false,
+   "enableNotificationListener": true,
+   "limitXPathContextScope": true,
+   "includeExtrasInPageSource": false,
+   "deferAccessibilityCacheReset": false,
+   "normalizeTagNames": false,
+   "trackScrollEvents": true,
+   "scrollAcknowledgmentTimeout": 200,
+   "enableTopmostWindowFromActivePackage": false,
+   "enableMultiWindows": false,
+   "useResourcesForOrientationDetection": false,
+   "currentDisplayId": 0,
+   "shouldUseCompactResponses": true,
+   "wakeLockTimeout": 86398573,
+   "shutdownOnPowerDisconnect": true,
+   "mjpegServerPort": 7810,
+   "mjpegScalingFactor": 50,
+   "alwaysTraversableViewClasses": "",
+   "disableIdLocatorAutocompletion": false,
+   "enforceXPath1": false,
+   "actionAcknowledgmentTimeout": 3000,
+   "mjpegServerScreenshotQuality": 50,
+   "keyInjectionDelay": 0,
+   "waitForIdleTimeout": 10000,
+   "mjpegServerFramerate": 10
+  }
+ },
+ "loads": [
+  {
+   "load": 100,
+   "host": {
+    "cpu": "Apple M1 Pro",
+    "memoryGB": 16,
+    "macOS": "26.6.2",
+    "power": "AC",
+    "lowPowerMode": false
+   },
+   "guest": {
+    "load1": 1.09,
+    "waitedS": 0
+   },
+   "firstStart": {
+    "buildMs": 77,
+    "firstDrawMs": 183,
+    "readyMs": 36.3
+   },
+   "firstSourceMs": 79.6,
+   "elements": 100,
+   "maxDepth": 39,
+   "targetDepths": {
+    "top": 8,
+    "deep": 39,
+    "end": 6
+   },
+   "passes": [
+    {
+     "guestLoadBefore": 1.41,
+     "waitedS": 30,
+     "buildMs": 31,
+     "firstDrawMs": 170,
+     "readyMs": 36.8,
+     "sourceMs": 38.8,
+     "errors": 0,
+     "hostQemuCpuPct": 137.4,
+     "guestLoadAfter": 1.3
+    },
+    {
+     "guestLoadBefore": 1.3,
+     "waitedS": 0,
+     "buildMs": 45,
+     "firstDrawMs": 160,
+     "readyMs": 39.6,
+     "sourceMs": 43.5,
+     "errors": 0,
+     "hostQemuCpuPct": 138,
+     "guestLoadAfter": 1.19
+    },
+    {
+     "guestLoadBefore": 1.19,
+     "waitedS": 0,
+     "buildMs": 76,
+     "firstDrawMs": 214,
+     "readyMs": 38.7,
+     "sourceMs": 41.3,
+     "errors": 0,
+     "hostQemuCpuPct": 138.5,
+     "guestLoadAfter": 1.18
+    }
+   ],
+   "discardedPasses": [],
+   "sourceMedianMs": 41.3,
+   "summary": {
+    "uiautomator": {
+     "cases": 30,
+     "xpathTotalMs": 1313.7,
+     "totalMs": 664.7,
+     "savingMs": 649,
+     "savingPct": 49.4,
+     "speedupGeomean": 2.17,
+     "faster": 30,
+     "byPosition": {
+      "top": {
+       "cases": 10,
+       "xpathTotalMs": 446,
+       "totalMs": 115.2,
+       "savingMs": 330.8,
+       "savingPct": 74.2,
+       "speedupGeomean": 3.92,
+       "faster": 10
+      },
+      "deep": {
+       "cases": 10,
+       "xpathTotalMs": 439,
+       "totalMs": 227.8,
+       "savingMs": 211.2,
+       "savingPct": 48.1,
+       "speedupGeomean": 1.95,
+       "faster": 10
+      },
+      "end": {
+       "cases": 10,
+       "xpathTotalMs": 428.7,
+       "totalMs": 321.7,
+       "savingMs": 107,
+       "savingPct": 25,
+       "speedupGeomean": 1.33,
+       "faster": 10
+      }
+     }
+    },
+    "id": {
+     "cases": 3,
+     "xpathTotalMs": 129.9,
+     "totalMs": 63,
+     "savingMs": 66.9,
+     "savingPct": 51.5,
+     "speedupGeomean": 2.29,
+     "faster": 3,
+     "byPosition": {
+      "top": {
+       "cases": 1,
+       "xpathTotalMs": 45.5,
+       "totalMs": 10.1,
+       "savingMs": 35.4,
+       "savingPct": 77.8,
+       "speedupGeomean": 4.5,
+       "faster": 1
+      },
+      "deep": {
+       "cases": 1,
+       "xpathTotalMs": 44,
+       "totalMs": 21.1,
+       "savingMs": 22.9,
+       "savingPct": 52,
+       "speedupGeomean": 2.09,
+       "faster": 1
+      },
+      "end": {
+       "cases": 1,
+       "xpathTotalMs": 40.4,
+       "totalMs": 31.8,
+       "savingMs": 8.6,
+       "savingPct": 21.3,
+       "speedupGeomean": 1.27,
+       "faster": 1
+      }
+     }
+    },
+    "accessibilityId": {
+     "cases": 3,
+     "xpathTotalMs": 131,
+     "totalMs": 61.3,
+     "savingMs": 69.7,
+     "savingPct": 53.2,
+     "speedupGeomean": 2.4,
+     "faster": 3,
+     "byPosition": {
+      "top": {
+       "cases": 1,
+       "xpathTotalMs": 45.2,
+       "totalMs": 9.3,
+       "savingMs": 35.9,
+       "savingPct": 79.4,
+       "speedupGeomean": 4.86,
+       "faster": 1
+      },
+      "deep": {
+       "cases": 1,
+       "xpathTotalMs": 43.7,
+       "totalMs": 20.4,
+       "savingMs": 23.3,
+       "savingPct": 53.3,
+       "speedupGeomean": 2.14,
+       "faster": 1
+      },
+      "end": {
+       "cases": 1,
+       "xpathTotalMs": 42.1,
+       "totalMs": 31.6,
+       "savingMs": 10.5,
+       "savingPct": 24.9,
+       "speedupGeomean": 1.33,
+       "faster": 1
+      }
+     }
+    }
+   },
+   "cases": [
+    {
+     "id": "S01-top",
+     "shape": 1,
+     "position": "top",
+     "locators": {
+      "xpath": "//android.widget.Button[@resource-id=\"io.github.domovou69.scalelab:id/nav_help\"]",
+      "uiautomator": "new UiSelector().className(\"android.widget.Button\").resourceId(\"io.github.domovou69.scalelab:id/nav_help\")",
+      "id": "io.github.domovou69.scalelab:id/nav_help"
+     },
+     "valid": true,
+     "hit": "android.widget.Button|io.github.domovou69.scalelab:id/nav_help|Help||[360,63][720,132]",
+     "ms": {
+      "xpath": [
+       45.5,
+       47.6,
+       34.5
+      ],
+      "uiautomator": [
+       13.2,
+       9.7,
+       11.9
+      ],
+      "id": [
+       10.1,
+       10.6,
+       8.9
+      ]
+     },
+     "median": {
+      "xpath": 45.5,
+      "uiautomator": 11.9,
+      "id": 10.1
+     }
+    },
+    {
+     "id": "S01-deep",
+     "shape": 1,
+     "position": "deep",
+     "locators": {
+      "xpath": "//android.widget.Button[@resource-id=\"io.github.domovou69.scalelab:id/review_helpful\"]",
+      "uiautomator": "new UiSelector().className(\"android.widget.Button\").resourceId(\"io.github.domovou69.scalelab:id/review_helpful\")",
+      "id": "io.github.domovou69.scalelab:id/review_helpful"
+     },
+     "valid": true,
+     "hit": "android.widget.Button|io.github.domovou69.scalelab:id/review_helpful|Yes, helpful||[0,960][540,1029]",
+     "ms": {
+      "xpath": [
+       48.8,
+       44,
+       42.3
+      ],
+      "uiautomator": [
+       23,
+       21.9,
+       27.3
+      ],
+      "id": [
+       21.1,
+       21.1,
+       20.6
+      ]
+     },
+     "median": {
+      "xpath": 44,
+      "uiautomator": 23,
+      "id": 21.1
+     }
+    },
+    {
+     "id": "S01-end",
+     "shape": 1,
+     "position": "end",
+     "locators": {
+      "xpath": "//android.widget.Button[@resource-id=\"io.github.domovou69.scalelab:id/checkout_placeOrder\"]",
+      "uiautomator": "new UiSelector().className(\"android.widget.Button\").resourceId(\"io.github.domovou69.scalelab:id/checkout_placeOrder\")",
+      "id": "io.github.domovou69.scalelab:id/checkout_placeOrder"
+     },
+     "valid": true,
+     "hit": "android.widget.Button|io.github.domovou69.scalelab:id/checkout_placeOrder|Place order||[0,2202][1080,2271]",
+     "ms": {
+      "xpath": [
+       40.4,
+       47.4,
+       38.7
+      ],
+      "uiautomator": [
+       35.7,
+       34,
+       34.9
+      ],
+      "id": [
+       33.3,
+       31.8,
+       31.7
+      ]
+     },
+     "median": {
+      "xpath": 40.4,
+      "uiautomator": 34.9,
+      "id": 31.8
+     }
+    },
+    {
+     "id": "S02-top",
+     "shape": 2,
+     "position": "top",
+     "locators": {
+      "xpath": "//android.widget.TextView[contains(@text,\"#1042\")]",
+      "uiautomator": "new UiSelector().className(\"android.widget.TextView\").textContains(\"#1042\")"
+     },
+     "valid": true,
+     "hit": "android.widget.TextView||Order #1042 · 3 items||[0,132][1080,201]",
+     "ms": {
+      "xpath": [
+       30.1,
+       43.8,
+       46.6
+      ],
+      "uiautomator": [
+       9.9,
+       9.7,
+       9.7
+      ]
+     },
+     "median": {
+      "xpath": 43.8,
+      "uiautomator": 9.7
+     }
+    },
+    {
+     "id": "S02-deep",
+     "shape": 2,
+     "position": "deep",
+     "locators": {
+      "xpath": "//android.widget.TextView[contains(@text,\"Anna K\")]",
+      "uiautomator": "new UiSelector().className(\"android.widget.TextView\").textContains(\"Anna K\")"
+     },
+     "valid": true,
+     "hit": "android.widget.TextView||Reply from Anna K.||[0,615][1080,684]",
+     "ms": {
+      "xpath": [
+       46.4,
+       40.8,
+       46.2
+      ],
+      "uiautomator": [
+       20.9,
+       19,
+       21.2
+      ]
+     },
+     "median": {
+      "xpath": 46.2,
+      "uiautomator": 20.9
+     }
+    },
+    {
+     "id": "S02-end",
+     "shape": 2,
+     "position": "end",
+     "locators": {
+      "xpath": "//android.widget.TextView[contains(@text,\"Baker St\")]",
+      "uiautomator": "new UiSelector().className(\"android.widget.TextView\").textContains(\"Baker St\")"
+     },
+     "valid": true,
+     "hit": "android.widget.TextView||Delivery address: 12 Baker St, London||[0,1650][1080,1719]",
+     "ms": {
+      "xpath": [
+       45.8,
+       41.3,
+       42.7
+      ],
+      "uiautomator": [
+       30.4,
+       35.3,
+       32.1
+      ]
+     },
+     "median": {
+      "xpath": 42.7,
+      "uiautomator": 32.1
+     }
+    },
+    {
+     "id": "S03-top",
+     "shape": 3,
+     "position": "top",
+     "locators": {
+      "xpath": "//*[contains(@class,\"Button\") and contains(@text,\"promo code\")]",
+      "uiautomator": "new UiSelector().classNameMatches(\".*Button.*\").textContains(\"promo code\")"
+     },
+     "valid": true,
+     "hit": "android.widget.Button||Apply promo code||[540,408][1080,477]",
+     "ms": {
+      "xpath": [
+       48.9,
+       45.5,
+       40.2
+      ],
+      "uiautomator": [
+       14,
+       11.9,
+       11.9
+      ]
+     },
+     "median": {
+      "xpath": 45.5,
+      "uiautomator": 11.9
+     }
+    },
+    {
+     "id": "S03-deep",
+     "shape": 3,
+     "position": "deep",
+     "locators": {
+      "xpath": "//*[contains(@class,\"Button\") and contains(@text,\"more replies\")]",
+      "uiautomator": "new UiSelector().classNameMatches(\".*Button.*\").textContains(\"more replies\")"
+     },
+     "valid": true,
+     "hit": "android.widget.Button||Show 3 more replies||[0,1098][1080,1167]",
+     "ms": {
+      "xpath": [
+       48.1,
+       44.7,
+       48.5
+      ],
+      "uiautomator": [
+       27.8,
+       28.5,
+       22.3
+      ]
+     },
+     "median": {
+      "xpath": 48.1,
+      "uiautomator": 27.8
+     }
+    },
+    {
+     "id": "S03-end",
+     "shape": 3,
+     "position": "end",
+     "locators": {
+      "xpath": "//*[contains(@class,\"Button\") and contains(@text,\"payment method\")]",
+      "uiautomator": "new UiSelector().classNameMatches(\".*Button.*\").textContains(\"payment method\")"
+     },
+     "valid": true,
+     "hit": "android.widget.Button||Change payment method||[0,1857][1080,1926]",
+     "ms": {
+      "xpath": [
+       48.1,
+       44.8,
+       44.8
+      ],
+      "uiautomator": [
+       30.5,
+       30.6,
+       29.5
+      ]
+     },
+     "median": {
+      "xpath": 44.8,
+      "uiautomator": 30.5
+     }
+    },
+    {
+     "id": "S04-top",
+     "shape": 4,
+     "position": "top",
+     "locators": {
+      "xpath": "//android.widget.TextView[@text=\"Free delivery over $50\"]",
+      "uiautomator": "new UiSelector().className(\"android.widget.TextView\").text(\"Free delivery over $50\")"
+     },
+     "valid": true,
+     "hit": "android.widget.TextView||Free delivery over $50||[0,201][1080,270]",
+     "ms": {
+      "xpath": [
+       43.1,
+       46.3,
+       51.6
+      ],
+      "uiautomator": [
+       9.2,
+       9,
+       13.1
+      ]
+     },
+     "median": {
+      "xpath": 46.3,
+      "uiautomator": 9.2
+     }
+    },
+    {
+     "id": "S04-deep",
+     "shape": 4,
+     "position": "deep",
+     "locators": {
+      "xpath": "//android.widget.TextView[@text=\"Great fit, runs small\"]",
+      "uiautomator": "new UiSelector().className(\"android.widget.TextView\").text(\"Great fit, runs small\")"
+     },
+     "valid": true,
+     "hit": "android.widget.TextView||Great fit, runs small||[0,684][1080,753]",
+     "ms": {
+      "xpath": [
+       41.9,
+       40.3,
+       42.8
+      ],
+      "uiautomator": [
+       20.6,
+       11.4,
+       15.2
+      ]
+     },
+     "median": {
+      "xpath": 41.9,
+      "uiautomator": 15.2
+     }
+    },
+    {
+     "id": "S04-end",
+     "shape": 4,
+     "position": "end",
+     "locators": {
+      "xpath": "//android.widget.TextView[@text=\"Total: $148.97\"]",
+      "uiautomator": "new UiSelector().className(\"android.widget.TextView\").text(\"Total: $148.97\")"
+     },
+     "valid": true,
+     "hit": "android.widget.TextView||Total: $148.97||[0,1995][1080,2064]",
+     "ms": {
+      "xpath": [
+       50.6,
+       38.4,
+       39.3
+      ],
+      "uiautomator": [
+       31.4,
+       29.2,
+       31.2
+      ]
+     },
+     "median": {
+      "xpath": 39.3,
+      "uiautomator": 31.2
+     }
+    },
+    {
+     "id": "S05-top",
+     "shape": 5,
+     "position": "top",
+     "locators": {
+      "xpath": "//*[contains(@class,\"EditText\") and contains(@resource-id,\"codeInput\")]",
+      "uiautomator": "new UiSelector().classNameMatches(\".*EditText.*\").resourceIdMatches(\".*codeInput.*\")"
+     },
+     "valid": true,
+     "hit": "android.widget.EditText|io.github.domovou69.scalelab:id/promo_codeInput|Promo code||[0,408][540,477]",
+     "ms": {
+      "xpath": [
+       41.2,
+       43.8,
+       46.9
+      ],
+      "uiautomator": [
+       10.3,
+       7.8,
+       11.2
+      ]
+     },
+     "median": {
+      "xpath": 43.8,
+      "uiautomator": 10.3
+     }
+    },
+    {
+     "id": "S05-deep",
+     "shape": 5,
+     "position": "deep",
+     "locators": {
+      "xpath": "//*[contains(@class,\"EditText\") and contains(@resource-id,\"replyInput\")]",
+      "uiautomator": "new UiSelector().classNameMatches(\".*EditText.*\").resourceIdMatches(\".*replyInput.*\")"
+     },
+     "valid": true,
+     "hit": "android.widget.EditText|io.github.domovou69.scalelab:id/review_replyInput|Write a reply||[0,1167][1080,1236]",
+     "ms": {
+      "xpath": [
+       35.3,
+       41.8,
+       49.9
+      ],
+      "uiautomator": [
+       31.8,
+       25.5,
+       18.2
+      ]
+     },
+     "median": {
+      "xpath": 41.8,
+      "uiautomator": 25.5
+     }
+    },
+    {
+     "id": "S05-end",
+     "shape": 5,
+     "position": "end",
+     "locators": {
+      "xpath": "//*[contains(@class,\"EditText\") and contains(@resource-id,\"postcode\")]",
+      "uiautomator": "new UiSelector().classNameMatches(\".*EditText.*\").resourceIdMatches(\".*postcode.*\")"
+     },
+     "valid": true,
+     "hit": "android.widget.EditText|io.github.domovou69.scalelab:id/address_postcodeField|Postcode||[0,1719][1080,1788]",
+     "ms": {
+      "xpath": [
+       35.3,
+       46.7,
+       47.4
+      ],
+      "uiautomator": [
+       28.5,
+       32.9,
+       32.2
+      ]
+     },
+     "median": {
+      "xpath": 46.7,
+      "uiautomator": 32.2
+     }
+    },
+    {
+     "id": "S06-top",
+     "shape": 6,
+     "position": "top",
+     "locators": {
+      "xpath": "//android.widget.Button[contains(@content-desc,\"Edit cart\")]",
+      "uiautomator": "new UiSelector().className(\"android.widget.Button\").descriptionContains(\"Edit cart\")"
+     },
+     "valid": true,
+     "hit": "android.widget.Button||Edit cart (3)|Edit cart, 3 items|[0,477][1080,546]",
+     "ms": {
+      "xpath": [
+       46.1,
+       40.1,
+       39.3
+      ],
+      "uiautomator": [
+       7.9,
+       14.2,
+       13.8
+      ]
+     },
+     "median": {
+      "xpath": 40.1,
+      "uiautomator": 13.8
+     }
+    },
+    {
+     "id": "S06-deep",
+     "shape": 6,
+     "position": "deep",
+     "locators": {
+      "xpath": "//android.widget.Button[contains(@content-desc,\"Report rev\")]",
+      "uiautomator": "new UiSelector().className(\"android.widget.Button\").descriptionContains(\"Report rev\")"
+     },
+     "valid": true,
+     "hit": "android.widget.Button||Report review|Report review as abuse|[540,960][1080,1029]",
+     "ms": {
+      "xpath": [
+       48.5,
+       43.4,
+       25.9
+      ],
+      "uiautomator": [
+       23.9,
+       24.8,
+       24
+      ]
+     },
+     "median": {
+      "xpath": 43.4,
+      "uiautomator": 24
+     }
+    },
+    {
+     "id": "S06-end",
+     "shape": 6,
+     "position": "end",
+     "locators": {
+      "xpath": "//android.widget.Button[contains(@content-desc,\"Terms of\")]",
+      "uiautomator": "new UiSelector().className(\"android.widget.Button\").descriptionContains(\"Terms of\")"
+     },
+     "valid": true,
+     "hit": "android.widget.Button||Terms of sale|Terms of sale and returns|[0,2064][1080,2133]",
+     "ms": {
+      "xpath": [
+       42.1,
+       44.3,
+       41.8
+      ],
+      "uiautomator": [
+       33.7,
+       30.3,
+       33.4
+      ]
+     },
+     "median": {
+      "xpath": 42.1,
+      "uiautomator": 33.4
+     }
+    },
+    {
+     "id": "S07-top",
+     "shape": 7,
+     "position": "top",
+     "locators": {
+      "xpath": "//*[@content-desc=\"Flash sale banner\"]",
+      "uiautomator": "new UiSelector().description(\"Flash sale banner\")",
+      "accessibilityId": "Flash sale banner"
+     },
+     "valid": true,
+     "hit": "android.widget.TextView||Flash sale ends in 02:14:09|Flash sale banner|[0,339][1080,408]",
+     "ms": {
+      "xpath": [
+       49.4,
+       45.2,
+       40.8
+      ],
+      "uiautomator": [
+       9.8,
+       10,
+       11.5
+      ],
+      "accessibilityId": [
+       8.8,
+       9.3,
+       11
+      ]
+     },
+     "median": {
+      "xpath": 45.2,
+      "uiautomator": 10,
+      "accessibilityId": 9.3
+     }
+    },
+    {
+     "id": "S07-deep",
+     "shape": 7,
+     "position": "deep",
+     "locators": {
+      "xpath": "//*[@content-desc=\"Verified purchase badge\"]",
+      "uiautomator": "new UiSelector().description(\"Verified purchase badge\")",
+      "accessibilityId": "Verified purchase badge"
+     },
+     "valid": true,
+     "hit": "android.widget.TextView||Verified purchase · Size M|Verified purchase badge|[0,753][1080,822]",
+     "ms": {
+      "xpath": [
+       44.6,
+       43.7,
+       43.2
+      ],
+      "uiautomator": [
+       20.6,
+       20.2,
+       22.1
+      ],
+      "accessibilityId": [
+       20.7,
+       19.7,
+       20.4
+      ]
+     },
+     "median": {
+      "xpath": 43.7,
+      "uiautomator": 20.6,
+      "accessibilityId": 20.4
+     }
+    },
+    {
+     "id": "S07-end",
+     "shape": 7,
+     "position": "end",
+     "locators": {
+      "xpath": "//*[@content-desc=\"Order help\"]",
+      "uiautomator": "new UiSelector().description(\"Order help\")",
+      "accessibilityId": "Order help"
+     },
+     "valid": true,
+     "hit": "android.widget.Button||Need help with your order?|Order help|[0,2133][1080,2202]",
+     "ms": {
+      "xpath": [
+       42.1,
+       40.6,
+       45.1
+      ],
+      "uiautomator": [
+       35.6,
+       37.4,
+       35.3
+      ],
+      "accessibilityId": [
+       28.7,
+       35.2,
+       31.6
+      ]
+     },
+     "median": {
+      "xpath": 42.1,
+      "uiautomator": 35.6,
+      "accessibilityId": 31.6
+     }
+    },
+    {
+     "id": "S08-top",
+     "shape": 8,
+     "position": "top",
+     "locators": {
+      "xpath": "(//android.widget.Button[@text=\"Add to cart\"])[2]",
+      "uiautomator": "new UiSelector().className(\"android.widget.Button\").text(\"Add to cart\").instance(1)"
+     },
+     "valid": true,
+     "hit": "android.widget.Button||Add to cart||[360,580][720,614]",
+     "ms": {
+      "xpath": [
+       44.7,
+       41.2,
+       45.3
+      ],
+      "uiautomator": [
+       16.1,
+       15.8,
+       19.1
+      ]
+     },
+     "median": {
+      "xpath": 44.7,
+      "uiautomator": 16.1
+     }
+    },
+    {
+     "id": "S08-deep",
+     "shape": 8,
+     "position": "deep",
+     "locators": {
+      "xpath": "(//android.widget.Button[@text=\"Reply\"])[2]",
+      "uiautomator": "new UiSelector().className(\"android.widget.Button\").text(\"Reply\").instance(1)"
+     },
+     "valid": true,
+     "hit": "android.widget.Button||Reply||[360,1029][720,1098]",
+     "ms": {
+      "xpath": [
+       43.6,
+       39.4,
+       41.7
+      ],
+      "uiautomator": [
+       26.3,
+       24,
+       23.7
+      ]
+     },
+     "median": {
+      "xpath": 41.7,
+      "uiautomator": 24
+     }
+    },
+    {
+     "id": "S08-end",
+     "shape": 8,
+     "position": "end",
+     "locators": {
+      "xpath": "(//android.widget.Button[@text=\"Remove\"])[3]",
+      "uiautomator": "new UiSelector().className(\"android.widget.Button\").text(\"Remove\").instance(2)"
+     },
+     "valid": true,
+     "hit": "android.widget.Button||Remove||[540,1374][1080,1443]",
+     "ms": {
+      "xpath": [
+       39.2,
+       40.4,
+       54
+      ],
+      "uiautomator": [
+       32.4,
+       31.8,
+       30.8
+      ]
+     },
+     "median": {
+      "xpath": 40.4,
+      "uiautomator": 31.8
+     }
+    },
+    {
+     "id": "S09-top",
+     "shape": 9,
+     "position": "top",
+     "locators": {
+      "xpath": "//*[@resource-id=\"io.github.domovou69.scalelab:id/cart_badge\" and @text=\"3 items\"]",
+      "uiautomator": "new UiSelector().resourceId(\"io.github.domovou69.scalelab:id/cart_badge\").text(\"3 items\")"
+     },
+     "valid": true,
+     "hit": "android.widget.Button|io.github.domovou69.scalelab:id/cart_badge|3 items||[720,63][1080,132]",
+     "ms": {
+      "xpath": [
+       52.4,
+       47.9,
+       46.3
+      ],
+      "uiautomator": [
+       10,
+       10.8,
+       12.7
+      ]
+     },
+     "median": {
+      "xpath": 47.9,
+      "uiautomator": 10.8
+     }
+    },
+    {
+     "id": "S09-deep",
+     "shape": 9,
+     "position": "deep",
+     "locators": {
+      "xpath": "//*[@resource-id=\"io.github.domovou69.scalelab:id/review_helpfulPrompt\" and @text=\"Was this helpful?\"]",
+      "uiautomator": "new UiSelector().resourceId(\"io.github.domovou69.scalelab:id/review_helpfulPrompt\").text(\"Was this helpful?\")"
+     },
+     "valid": true,
+     "hit": "android.widget.TextView|io.github.domovou69.scalelab:id/review_helpfulPrompt|Was this helpful?||[0,891][1080,960]",
+     "ms": {
+      "xpath": [
+       51.6,
+       47.3,
+       40.8
+      ],
+      "uiautomator": [
+       22.2,
+       23.3,
+       22.8
+      ]
+     },
+     "median": {
+      "xpath": 47.3,
+      "uiautomator": 22.8
+     }
+    },
+    {
+     "id": "S09-end",
+     "shape": 9,
+     "position": "end",
+     "locators": {
+      "xpath": "//*[@resource-id=\"io.github.domovou69.scalelab:id/checkout_saveAddress\" and @text=\"Save address\"]",
+      "uiautomator": "new UiSelector().resourceId(\"io.github.domovou69.scalelab:id/checkout_saveAddress\").text(\"Save address\")"
+     },
+     "valid": true,
+     "hit": "android.widget.Button|io.github.domovou69.scalelab:id/checkout_saveAddress|Save address||[0,1788][1080,1857]",
+     "ms": {
+      "xpath": [
+       46.7,
+       44.4,
+       34.9
+      ],
+      "uiautomator": [
+       29.6,
+       34.6,
+       29.4
+      ]
+     },
+     "median": {
+      "xpath": 44.4,
+      "uiautomator": 29.6
+     }
+    },
+    {
+     "id": "S10-top",
+     "shape": 10,
+     "position": "top",
+     "locators": {
+      "xpath": "//*[contains(@resource-id,\"deliveryInfo\")]/child::android.widget.TextView[@text=\"Arrives Tue, Oct 14\"]",
+      "uiautomator": "new UiSelector().resourceIdMatches(\".*deliveryInfo.*\").childSelector(new UiSelector().className(\"android.widget.TextView\").text(\"Arrives Tue, Oct 14\"))"
+     },
+     "valid": true,
+     "hit": "android.widget.TextView||Arrives Tue, Oct 14||[0,270][1080,339]",
+     "ms": {
+      "xpath": [
+       47.1,
+       42.9,
+       43.2
+      ],
+      "uiautomator": [
+       11.5,
+       12.2,
+       10.2
+      ]
+     },
+     "median": {
+      "xpath": 43.2,
+      "uiautomator": 11.5
+     }
+    },
+    {
+     "id": "S10-deep",
+     "shape": 10,
+     "position": "deep",
+     "locators": {
+      "xpath": "//*[contains(@resource-id,\"replyMeta\")]/child::android.widget.TextView[@text=\"Posted 2 days ago\"]",
+      "uiautomator": "new UiSelector().resourceIdMatches(\".*replyMeta.*\").childSelector(new UiSelector().className(\"android.widget.TextView\").text(\"Posted 2 days ago\"))"
+     },
+     "valid": true,
+     "hit": "android.widget.TextView||Posted 2 days ago||[0,822][1080,891]",
+     "ms": {
+      "xpath": [
+       40.9,
+       31,
+       46.3
+      ],
+      "uiautomator": [
+       23.5,
+       25,
+       24
+      ]
+     },
+     "median": {
+      "xpath": 40.9,
+      "uiautomator": 24
+     }
+    },
+    {
+     "id": "S10-end",
+     "shape": 10,
+     "position": "end",
+     "locators": {
+      "xpath": "//*[contains(@resource-id,\"summary_taxes\")]/child::android.widget.TextView[@text=\"Taxes: $11.02\"]",
+      "uiautomator": "new UiSelector().resourceIdMatches(\".*summary_taxes.*\").childSelector(new UiSelector().className(\"android.widget.TextView\").text(\"Taxes: $11.02\"))"
+     },
+     "valid": true,
+     "hit": "android.widget.TextView||Taxes: $11.02||[0,1926][1080,1995]",
+     "ms": {
+      "xpath": [
+       48.8,
+       45.8,
+       45.6
+      ],
+      "uiautomator": [
+       28.8,
+       30.4,
+       35.9
+      ]
+     },
+     "median": {
+      "xpath": 45.8,
+      "uiautomator": 30.4
+     }
+    }
+   ]
+  },
+  {
+   "load": 500,
+   "host": {
+    "cpu": "Apple M1 Pro",
+    "memoryGB": 16,
+    "macOS": "26.6.2",
+    "power": "AC",
+    "lowPowerMode": false
+   },
+   "guest": {
+    "load1": 0.73,
+    "waitedS": 0
+   },
+   "firstStart": {
+    "buildMs": 79,
+    "firstDrawMs": 186,
+    "readyMs": 273.7
+   },
+   "firstSourceMs": 371.1,
+   "elements": 497,
+   "maxDepth": 39,
+   "targetDepths": {
+    "top": 8,
+    "deep": 39,
+    "end": 6
+   },
+   "passes": [
+    {
+     "guestLoadBefore": 1.42,
+     "waitedS": 50,
+     "buildMs": 100,
+     "firstDrawMs": 216,
+     "readyMs": 201.9,
+     "sourceMs": 338.5,
+     "errors": 0,
+     "hostQemuCpuPct": 124.9,
+     "guestLoadAfter": 1.23
+    },
+    {
+     "guestLoadBefore": 1.23,
+     "waitedS": 0,
+     "buildMs": 108,
+     "firstDrawMs": 365,
+     "readyMs": 199.3,
+     "sourceMs": 339.2,
+     "errors": 0,
+     "hostQemuCpuPct": 129.8,
+     "guestLoadAfter": 1.25
+    },
+    {
+     "guestLoadBefore": 1.25,
+     "waitedS": 0,
+     "buildMs": 43,
+     "firstDrawMs": 172,
+     "readyMs": 185.6,
+     "sourceMs": 328.6,
+     "errors": 0,
+     "hostQemuCpuPct": 127,
+     "guestLoadAfter": 1.09
+    }
+   ],
+   "discardedPasses": [],
+   "sourceMedianMs": 338.5,
+   "summary": {
+    "uiautomator": {
+     "cases": 30,
+     "xpathTotalMs": 7688,
+     "totalMs": 6125.9,
+     "savingMs": 1562.1,
+     "savingPct": 20.3,
+     "speedupGeomean": 1.26,
+     "faster": 30,
+     "byPosition": {
+      "top": {
+       "cases": 10,
+       "xpathTotalMs": 2551.7,
+       "totalMs": 1947.4,
+       "savingMs": 604.3,
+       "savingPct": 23.7,
+       "speedupGeomean": 1.31,
+       "faster": 10
+      },
+      "deep": {
+       "cases": 10,
+       "xpathTotalMs": 2561.5,
+       "totalMs": 1986.6,
+       "savingMs": 574.9,
+       "savingPct": 22.4,
+       "speedupGeomean": 1.29,
+       "faster": 10
+      },
+      "end": {
+       "cases": 10,
+       "xpathTotalMs": 2574.8,
+       "totalMs": 2191.9,
+       "savingMs": 382.9,
+       "savingPct": 14.9,
+       "speedupGeomean": 1.18,
+       "faster": 10
+      }
+     }
+    },
+    "id": {
+     "cases": 3,
+     "xpathTotalMs": 673.3,
+     "totalMs": 521.1,
+     "savingMs": 152.2,
+     "savingPct": 22.6,
+     "speedupGeomean": 1.3,
+     "faster": 3,
+     "byPosition": {
+      "top": {
+       "cases": 1,
+       "xpathTotalMs": 220.6,
+       "totalMs": 144,
+       "savingMs": 76.6,
+       "savingPct": 34.7,
+       "speedupGeomean": 1.53,
+       "faster": 1
+      },
+      "deep": {
+       "cases": 1,
+       "xpathTotalMs": 222.9,
+       "totalMs": 186,
+       "savingMs": 36.9,
+       "savingPct": 16.6,
+       "speedupGeomean": 1.2,
+       "faster": 1
+      },
+      "end": {
+       "cases": 1,
+       "xpathTotalMs": 229.8,
+       "totalMs": 191.1,
+       "savingMs": 38.7,
+       "savingPct": 16.8,
+       "speedupGeomean": 1.2,
+       "faster": 1
+      }
+     }
+    },
+    "accessibilityId": {
+     "cases": 3,
+     "xpathTotalMs": 781.1,
+     "totalMs": 640.9,
+     "savingMs": 140.2,
+     "savingPct": 17.9,
+     "speedupGeomean": 1.22,
+     "faster": 3,
+     "byPosition": {
+      "top": {
+       "cases": 1,
+       "xpathTotalMs": 266.2,
+       "totalMs": 196.3,
+       "savingMs": 69.9,
+       "savingPct": 26.3,
+       "speedupGeomean": 1.36,
+       "faster": 1
+      },
+      "deep": {
+       "cases": 1,
+       "xpathTotalMs": 253.4,
+       "totalMs": 226.4,
+       "savingMs": 27,
+       "savingPct": 10.7,
+       "speedupGeomean": 1.12,
+       "faster": 1
+      },
+      "end": {
+       "cases": 1,
+       "xpathTotalMs": 261.5,
+       "totalMs": 218.2,
+       "savingMs": 43.3,
+       "savingPct": 16.6,
+       "speedupGeomean": 1.2,
+       "faster": 1
+      }
+     }
+    }
+   },
+   "cases": [
+    {
+     "id": "S01-top",
+     "shape": 1,
+     "position": "top",
+     "locators": {
+      "xpath": "//android.widget.Button[@resource-id=\"io.github.domovou69.scalelab:id/nav_help\"]",
+      "uiautomator": "new UiSelector().className(\"android.widget.Button\").resourceId(\"io.github.domovou69.scalelab:id/nav_help\")",
+      "id": "io.github.domovou69.scalelab:id/nav_help"
+     },
+     "valid": true,
+     "hit": "android.widget.Button|io.github.domovou69.scalelab:id/nav_help|Help||[360,63][720,132]",
+     "ms": {
+      "xpath": [
+       215.4,
+       247.8,
+       220.6
+      ],
+      "uiautomator": [
+       148.3,
+       161.6,
+       165.9
+      ],
+      "id": [
+       133.9,
+       149,
+       144
+      ]
+     },
+     "median": {
+      "xpath": 220.6,
+      "uiautomator": 161.6,
+      "id": 144
+     }
+    },
+    {
+     "id": "S01-deep",
+     "shape": 1,
+     "position": "deep",
+     "locators": {
+      "xpath": "//android.widget.Button[@resource-id=\"io.github.domovou69.scalelab:id/review_helpful\"]",
+      "uiautomator": "new UiSelector().className(\"android.widget.Button\").resourceId(\"io.github.domovou69.scalelab:id/review_helpful\")",
+      "id": "io.github.domovou69.scalelab:id/review_helpful"
+     },
+     "valid": true,
+     "hit": "android.widget.Button|io.github.domovou69.scalelab:id/review_helpful|Yes, helpful||[0,960][540,1029]",
+     "ms": {
+      "xpath": [
+       222.9,
+       212.8,
+       258
+      ],
+      "uiautomator": [
+       154.6,
+       179.3,
+       155.6
+      ],
+      "id": [
+       186,
+       186.5,
+       183.5
+      ]
+     },
+     "median": {
+      "xpath": 222.9,
+      "uiautomator": 155.6,
+      "id": 186
+     }
+    },
+    {
+     "id": "S01-end",
+     "shape": 1,
+     "position": "end",
+     "locators": {
+      "xpath": "//android.widget.Button[@resource-id=\"io.github.domovou69.scalelab:id/checkout_placeOrder\"]",
+      "uiautomator": "new UiSelector().className(\"android.widget.Button\").resourceId(\"io.github.domovou69.scalelab:id/checkout_placeOrder\")",
+      "id": "io.github.domovou69.scalelab:id/checkout_placeOrder"
+     },
+     "valid": true,
+     "hit": "android.widget.Button|io.github.domovou69.scalelab:id/checkout_placeOrder|Place order||[0,2202][1080,2271]",
+     "ms": {
+      "xpath": [
+       229.8,
+       231.4,
+       210.7
+      ],
+      "uiautomator": [
+       182.9,
+       228.4,
+       206.6
+      ],
+      "id": [
+       193.4,
+       191.1,
+       180.8
+      ]
+     },
+     "median": {
+      "xpath": 229.8,
+      "uiautomator": 206.6,
+      "id": 191.1
+     }
+    },
+    {
+     "id": "S02-top",
+     "shape": 2,
+     "position": "top",
+     "locators": {
+      "xpath": "//android.widget.TextView[contains(@text,\"#1042\")]",
+      "uiautomator": "new UiSelector().className(\"android.widget.TextView\").textContains(\"#1042\")"
+     },
+     "valid": true,
+     "hit": "android.widget.TextView||Order #1042 · 3 items||[0,132][1080,201]",
+     "ms": {
+      "xpath": [
+       285.7,
+       221.9,
+       223
+      ],
+      "uiautomator": [
+       166.6,
+       173.3,
+       173.2
+      ]
+     },
+     "median": {
+      "xpath": 223,
+      "uiautomator": 173.2
+     }
+    },
+    {
+     "id": "S02-deep",
+     "shape": 2,
+     "position": "deep",
+     "locators": {
+      "xpath": "//android.widget.TextView[contains(@text,\"Anna K\")]",
+      "uiautomator": "new UiSelector().className(\"android.widget.TextView\").textContains(\"Anna K\")"
+     },
+     "valid": true,
+     "hit": "android.widget.TextView||Reply from Anna K.||[0,615][1080,684]",
+     "ms": {
+      "xpath": [
+       247.6,
+       220.8,
+       238.1
+      ],
+      "uiautomator": [
+       165.4,
+       168.5,
+       200.9
+      ]
+     },
+     "median": {
+      "xpath": 238.1,
+      "uiautomator": 168.5
+     }
+    },
+    {
+     "id": "S02-end",
+     "shape": 2,
+     "position": "end",
+     "locators": {
+      "xpath": "//android.widget.TextView[contains(@text,\"Baker St\")]",
+      "uiautomator": "new UiSelector().className(\"android.widget.TextView\").textContains(\"Baker St\")"
+     },
+     "valid": true,
+     "hit": "android.widget.TextView||Delivery address: 12 Baker St, London||[0,1650][1080,1719]",
+     "ms": {
+      "xpath": [
+       250.8,
+       230.7,
+       240.4
+      ],
+      "uiautomator": [
+       195.5,
+       215.6,
+       191.1
+      ]
+     },
+     "median": {
+      "xpath": 240.4,
+      "uiautomator": 195.5
+     }
+    },
+    {
+     "id": "S03-top",
+     "shape": 3,
+     "position": "top",
+     "locators": {
+      "xpath": "//*[contains(@class,\"Button\") and contains(@text,\"promo code\")]",
+      "uiautomator": "new UiSelector().classNameMatches(\".*Button.*\").textContains(\"promo code\")"
+     },
+     "valid": true,
+     "hit": "android.widget.Button||Apply promo code||[540,408][1080,477]",
+     "ms": {
+      "xpath": [
+       267.8,
+       263.7,
+       270
+      ],
+      "uiautomator": [
+       183.5,
+       209,
+       206.4
+      ]
+     },
+     "median": {
+      "xpath": 267.8,
+      "uiautomator": 206.4
+     }
+    },
+    {
+     "id": "S03-deep",
+     "shape": 3,
+     "position": "deep",
+     "locators": {
+      "xpath": "//*[contains(@class,\"Button\") and contains(@text,\"more replies\")]",
+      "uiautomator": "new UiSelector().classNameMatches(\".*Button.*\").textContains(\"more replies\")"
+     },
+     "valid": true,
+     "hit": "android.widget.Button||Show 3 more replies||[0,1098][1080,1167]",
+     "ms": {
+      "xpath": [
+       273.6,
+       290.2,
+       240.4
+      ],
+      "uiautomator": [
+       198.8,
+       232.5,
+       199
+      ]
+     },
+     "median": {
+      "xpath": 273.6,
+      "uiautomator": 199
+     }
+    },
+    {
+     "id": "S03-end",
+     "shape": 3,
+     "position": "end",
+     "locators": {
+      "xpath": "//*[contains(@class,\"Button\") and contains(@text,\"payment method\")]",
+      "uiautomator": "new UiSelector().classNameMatches(\".*Button.*\").textContains(\"payment method\")"
+     },
+     "valid": true,
+     "hit": "android.widget.Button||Change payment method||[0,1857][1080,1926]",
+     "ms": {
+      "xpath": [
+       266.3,
+       256.6,
+       247.1
+      ],
+      "uiautomator": [
+       210.8,
+       205.3,
+       213
+      ]
+     },
+     "median": {
+      "xpath": 256.6,
+      "uiautomator": 210.8
+     }
+    },
+    {
+     "id": "S04-top",
+     "shape": 4,
+     "position": "top",
+     "locators": {
+      "xpath": "//android.widget.TextView[@text=\"Free delivery over $50\"]",
+      "uiautomator": "new UiSelector().className(\"android.widget.TextView\").text(\"Free delivery over $50\")"
+     },
+     "valid": true,
+     "hit": "android.widget.TextView||Free delivery over $50||[0,201][1080,270]",
+     "ms": {
+      "xpath": [
+       256.8,
+       249.2,
+       256.2
+      ],
+      "uiautomator": [
+       192.9,
+       197.5,
+       198.3
+      ]
+     },
+     "median": {
+      "xpath": 256.2,
+      "uiautomator": 197.5
+     }
+    },
+    {
+     "id": "S04-deep",
+     "shape": 4,
+     "position": "deep",
+     "locators": {
+      "xpath": "//android.widget.TextView[@text=\"Great fit, runs small\"]",
+      "uiautomator": "new UiSelector().className(\"android.widget.TextView\").text(\"Great fit, runs small\")"
+     },
+     "valid": true,
+     "hit": "android.widget.TextView||Great fit, runs small||[0,684][1080,753]",
+     "ms": {
+      "xpath": [
+       260.4,
+       242.3,
+       229.8
+      ],
+      "uiautomator": [
+       215.3,
+       200.5,
+       185.5
+      ]
+     },
+     "median": {
+      "xpath": 242.3,
+      "uiautomator": 200.5
+     }
+    },
+    {
+     "id": "S04-end",
+     "shape": 4,
+     "position": "end",
+     "locators": {
+      "xpath": "//android.widget.TextView[@text=\"Total: $148.97\"]",
+      "uiautomator": "new UiSelector().className(\"android.widget.TextView\").text(\"Total: $148.97\")"
+     },
+     "valid": true,
+     "hit": "android.widget.TextView||Total: $148.97||[0,1995][1080,2064]",
+     "ms": {
+      "xpath": [
+       261.8,
+       270.3,
+       247.9
+      ],
+      "uiautomator": [
+       772.1,
+       235,
+       212.7
+      ]
+     },
+     "median": {
+      "xpath": 261.8,
+      "uiautomator": 235
+     }
+    },
+    {
+     "id": "S05-top",
+     "shape": 5,
+     "position": "top",
+     "locators": {
+      "xpath": "//*[contains(@class,\"EditText\") and contains(@resource-id,\"codeInput\")]",
+      "uiautomator": "new UiSelector().classNameMatches(\".*EditText.*\").resourceIdMatches(\".*codeInput.*\")"
+     },
+     "valid": true,
+     "hit": "android.widget.EditText|io.github.domovou69.scalelab:id/promo_codeInput|Promo code||[0,408][540,477]",
+     "ms": {
+      "xpath": [
+       265.1,
+       263.8,
+       261.2
+      ],
+      "uiautomator": [
+       206.5,
+       201.9,
+       574.3
+      ]
+     },
+     "median": {
+      "xpath": 263.8,
+      "uiautomator": 206.5
+     }
+    },
+    {
+     "id": "S05-deep",
+     "shape": 5,
+     "position": "deep",
+     "locators": {
+      "xpath": "//*[contains(@class,\"EditText\") and contains(@resource-id,\"replyInput\")]",
+      "uiautomator": "new UiSelector().classNameMatches(\".*EditText.*\").resourceIdMatches(\".*replyInput.*\")"
+     },
+     "valid": true,
+     "hit": "android.widget.EditText|io.github.domovou69.scalelab:id/review_replyInput|Write a reply||[0,1167][1080,1236]",
+     "ms": {
+      "xpath": [
+       255.4,
+       259.9,
+       259.2
+      ],
+      "uiautomator": [
+       201,
+       208.7,
+       198.5
+      ]
+     },
+     "median": {
+      "xpath": 259.2,
+      "uiautomator": 201
+     }
+    },
+    {
+     "id": "S05-end",
+     "shape": 5,
+     "position": "end",
+     "locators": {
+      "xpath": "//*[contains(@class,\"EditText\") and contains(@resource-id,\"postcode\")]",
+      "uiautomator": "new UiSelector().classNameMatches(\".*EditText.*\").resourceIdMatches(\".*postcode.*\")"
+     },
+     "valid": true,
+     "hit": "android.widget.EditText|io.github.domovou69.scalelab:id/address_postcodeField|Postcode||[0,1719][1080,1788]",
+     "ms": {
+      "xpath": [
+       272.1,
+       239.1,
+       257.6
+      ],
+      "uiautomator": [
+       217,
+       217.4,
+       221.4
+      ]
+     },
+     "median": {
+      "xpath": 257.6,
+      "uiautomator": 217.4
+     }
+    },
+    {
+     "id": "S06-top",
+     "shape": 6,
+     "position": "top",
+     "locators": {
+      "xpath": "//android.widget.Button[contains(@content-desc,\"Edit cart\")]",
+      "uiautomator": "new UiSelector().className(\"android.widget.Button\").descriptionContains(\"Edit cart\")"
+     },
+     "valid": true,
+     "hit": "android.widget.Button||Edit cart (3)|Edit cart, 3 items|[0,477][1080,546]",
+     "ms": {
+      "xpath": [
+       266.2,
+       236.1,
+       249
+      ],
+      "uiautomator": [
+       179.8,
+       212.6,
+       189.9
+      ]
+     },
+     "median": {
+      "xpath": 249,
+      "uiautomator": 189.9
+     }
+    },
+    {
+     "id": "S06-deep",
+     "shape": 6,
+     "position": "deep",
+     "locators": {
+      "xpath": "//android.widget.Button[contains(@content-desc,\"Report rev\")]",
+      "uiautomator": "new UiSelector().className(\"android.widget.Button\").descriptionContains(\"Report rev\")"
+     },
+     "valid": true,
+     "hit": "android.widget.Button||Report review|Report review as abuse|[540,960][1080,1029]",
+     "ms": {
+      "xpath": [
+       269.1,
+       253.5,
+       260.1
+      ],
+      "uiautomator": [
+       201.5,
+       206.4,
+       192.2
+      ]
+     },
+     "median": {
+      "xpath": 260.1,
+      "uiautomator": 201.5
+     }
+    },
+    {
+     "id": "S06-end",
+     "shape": 6,
+     "position": "end",
+     "locators": {
+      "xpath": "//android.widget.Button[contains(@content-desc,\"Terms of\")]",
+      "uiautomator": "new UiSelector().className(\"android.widget.Button\").descriptionContains(\"Terms of\")"
+     },
+     "valid": true,
+     "hit": "android.widget.Button||Terms of sale|Terms of sale and returns|[0,2064][1080,2133]",
+     "ms": {
+      "xpath": [
+       261.8,
+       269.6,
+       245.3
+      ],
+      "uiautomator": [
+       237.7,
+       240.1,
+       210.8
+      ]
+     },
+     "median": {
+      "xpath": 261.8,
+      "uiautomator": 237.7
+     }
+    },
+    {
+     "id": "S07-top",
+     "shape": 7,
+     "position": "top",
+     "locators": {
+      "xpath": "//*[@content-desc=\"Flash sale banner\"]",
+      "uiautomator": "new UiSelector().description(\"Flash sale banner\")",
+      "accessibilityId": "Flash sale banner"
+     },
+     "valid": true,
+     "hit": "android.widget.TextView||Flash sale ends in 02:14:09|Flash sale banner|[0,339][1080,408]",
+     "ms": {
+      "xpath": [
+       271.8,
+       266.2,
+       233.2
+      ],
+      "uiautomator": [
+       214.9,
+       259,
+       182.5
+      ],
+      "accessibilityId": [
+       196.3,
+       224.8,
+       190.6
+      ]
+     },
+     "median": {
+      "xpath": 266.2,
+      "uiautomator": 214.9,
+      "accessibilityId": 196.3
+     }
+    },
+    {
+     "id": "S07-deep",
+     "shape": 7,
+     "position": "deep",
+     "locators": {
+      "xpath": "//*[@content-desc=\"Verified purchase badge\"]",
+      "uiautomator": "new UiSelector().description(\"Verified purchase badge\")",
+      "accessibilityId": "Verified purchase badge"
+     },
+     "valid": true,
+     "hit": "android.widget.TextView||Verified purchase · Size M|Verified purchase badge|[0,753][1080,822]",
+     "ms": {
+      "xpath": [
+       254.6,
+       253.4,
+       252.4
+      ],
+      "uiautomator": [
+       204.7,
+       238.5,
+       216.7
+      ],
+      "accessibilityId": [
+       221.9,
+       226.4,
+       258.8
+      ]
+     },
+     "median": {
+      "xpath": 253.4,
+      "uiautomator": 216.7,
+      "accessibilityId": 226.4
+     }
+    },
+    {
+     "id": "S07-end",
+     "shape": 7,
+     "position": "end",
+     "locators": {
+      "xpath": "//*[@content-desc=\"Order help\"]",
+      "uiautomator": "new UiSelector().description(\"Order help\")",
+      "accessibilityId": "Order help"
+     },
+     "valid": true,
+     "hit": "android.widget.Button||Need help with your order?|Order help|[0,2133][1080,2202]",
+     "ms": {
+      "xpath": [
+       261.5,
+       278.7,
+       258.1
+      ],
+      "uiautomator": [
+       234.2,
+       227.2,
+       215
+      ],
+      "accessibilityId": [
+       218.2,
+       209.2,
+       231.3
+      ]
+     },
+     "median": {
+      "xpath": 261.5,
+      "uiautomator": 227.2,
+      "accessibilityId": 218.2
+     }
+    },
+    {
+     "id": "S08-top",
+     "shape": 8,
+     "position": "top",
+     "locators": {
+      "xpath": "(//android.widget.Button[@text=\"Add to cart\"])[2]",
+      "uiautomator": "new UiSelector().className(\"android.widget.Button\").text(\"Add to cart\").instance(1)"
+     },
+     "valid": true,
+     "hit": "android.widget.Button||Add to cart||[360,580][720,614]",
+     "ms": {
+      "xpath": [
+       252.8,
+       258.4,
+       269.1
+      ],
+      "uiautomator": [
+       199.8,
+       202.4,
+       195.7
+      ]
+     },
+     "median": {
+      "xpath": 258.4,
+      "uiautomator": 199.8
+     }
+    },
+    {
+     "id": "S08-deep",
+     "shape": 8,
+     "position": "deep",
+     "locators": {
+      "xpath": "(//android.widget.Button[@text=\"Reply\"])[2]",
+      "uiautomator": "new UiSelector().className(\"android.widget.Button\").text(\"Reply\").instance(1)"
+     },
+     "valid": true,
+     "hit": "android.widget.Button||Reply||[360,1029][720,1098]",
+     "ms": {
+      "xpath": [
+       267.7,
+       260.5,
+       278.4
+      ],
+      "uiautomator": [
+       216.5,
+       203.4,
+       187.9
+      ]
+     },
+     "median": {
+      "xpath": 267.7,
+      "uiautomator": 203.4
+     }
+    },
+    {
+     "id": "S08-end",
+     "shape": 8,
+     "position": "end",
+     "locators": {
+      "xpath": "(//android.widget.Button[@text=\"Remove\"])[3]",
+      "uiautomator": "new UiSelector().className(\"android.widget.Button\").text(\"Remove\").instance(2)"
+     },
+     "valid": true,
+     "hit": "android.widget.Button||Remove||[540,1374][1080,1443]",
+     "ms": {
+      "xpath": [
+       276,
+       242.3,
+       251.5
+      ],
+      "uiautomator": [
+       208,
+       197.6,
+       199
+      ]
+     },
+     "median": {
+      "xpath": 251.5,
+      "uiautomator": 199
+     }
+    },
+    {
+     "id": "S09-top",
+     "shape": 9,
+     "position": "top",
+     "locators": {
+      "xpath": "//*[@resource-id=\"io.github.domovou69.scalelab:id/cart_badge\" and @text=\"3 items\"]",
+      "uiautomator": "new UiSelector().resourceId(\"io.github.domovou69.scalelab:id/cart_badge\").text(\"3 items\")"
+     },
+     "valid": true,
+     "hit": "android.widget.Button|io.github.domovou69.scalelab:id/cart_badge|3 items||[720,63][1080,132]",
+     "ms": {
+      "xpath": [
+       259.5,
+       273.6,
+       265.3
+      ],
+      "uiautomator": [
+       202.6,
+       190.8,
+       185.3
+      ]
+     },
+     "median": {
+      "xpath": 265.3,
+      "uiautomator": 190.8
+     }
+    },
+    {
+     "id": "S09-deep",
+     "shape": 9,
+     "position": "deep",
+     "locators": {
+      "xpath": "//*[@resource-id=\"io.github.domovou69.scalelab:id/review_helpfulPrompt\" and @text=\"Was this helpful?\"]",
+      "uiautomator": "new UiSelector().resourceId(\"io.github.domovou69.scalelab:id/review_helpfulPrompt\").text(\"Was this helpful?\")"
+     },
+     "valid": true,
+     "hit": "android.widget.TextView|io.github.domovou69.scalelab:id/review_helpfulPrompt|Was this helpful?||[0,891][1080,960]",
+     "ms": {
+      "xpath": [
+       291.6,
+       271.5,
+       276.1
+      ],
+      "uiautomator": [
+       223.2,
+       228,
+       193.5
+      ]
+     },
+     "median": {
+      "xpath": 276.1,
+      "uiautomator": 223.2
+     }
+    },
+    {
+     "id": "S09-end",
+     "shape": 9,
+     "position": "end",
+     "locators": {
+      "xpath": "//*[@resource-id=\"io.github.domovou69.scalelab:id/checkout_saveAddress\" and @text=\"Save address\"]",
+      "uiautomator": "new UiSelector().resourceId(\"io.github.domovou69.scalelab:id/checkout_saveAddress\").text(\"Save address\")"
+     },
+     "valid": true,
+     "hit": "android.widget.Button|io.github.domovou69.scalelab:id/checkout_saveAddress|Save address||[0,1788][1080,1857]",
+     "ms": {
+      "xpath": [
+       283.8,
+       284.5,
+       271.3
+      ],
+      "uiautomator": [
+       219,
+       230.7,
+       215
+      ]
+     },
+     "median": {
+      "xpath": 283.8,
+      "uiautomator": 219
+     }
+    },
+    {
+     "id": "S10-top",
+     "shape": 10,
+     "position": "top",
+     "locators": {
+      "xpath": "//*[contains(@resource-id,\"deliveryInfo\")]/child::android.widget.TextView[@text=\"Arrives Tue, Oct 14\"]",
+      "uiautomator": "new UiSelector().resourceIdMatches(\".*deliveryInfo.*\").childSelector(new UiSelector().className(\"android.widget.TextView\").text(\"Arrives Tue, Oct 14\"))"
+     },
+     "valid": true,
+     "hit": "android.widget.TextView||Arrives Tue, Oct 14||[0,270][1080,339]",
+     "ms": {
+      "xpath": [
+       281.4,
+       281.4,
+       255.6
+      ],
+      "uiautomator": [
+       206.8,
+       220.7,
+       191.6
+      ]
+     },
+     "median": {
+      "xpath": 281.4,
+      "uiautomator": 206.8
+     }
+    },
+    {
+     "id": "S10-deep",
+     "shape": 10,
+     "position": "deep",
+     "locators": {
+      "xpath": "//*[contains(@resource-id,\"replyMeta\")]/child::android.widget.TextView[@text=\"Posted 2 days ago\"]",
+      "uiautomator": "new UiSelector().resourceIdMatches(\".*replyMeta.*\").childSelector(new UiSelector().className(\"android.widget.TextView\").text(\"Posted 2 days ago\"))"
+     },
+     "valid": true,
+     "hit": "android.widget.TextView||Posted 2 days ago||[0,822][1080,891]",
+     "ms": {
+      "xpath": [
+       280.7,
+       268.1,
+       264.3
+      ],
+      "uiautomator": [
+       236.1,
+       210.7,
+       217.2
+      ]
+     },
+     "median": {
+      "xpath": 268.1,
+      "uiautomator": 217.2
+     }
+    },
+    {
+     "id": "S10-end",
+     "shape": 10,
+     "position": "end",
+     "locators": {
+      "xpath": "//*[contains(@resource-id,\"summary_taxes\")]/child::android.widget.TextView[@text=\"Taxes: $11.02\"]",
+      "uiautomator": "new UiSelector().resourceIdMatches(\".*summary_taxes.*\").childSelector(new UiSelector().className(\"android.widget.TextView\").text(\"Taxes: $11.02\"))"
+     },
+     "valid": true,
+     "hit": "android.widget.TextView||Taxes: $11.02||[0,1926][1080,1995]",
+     "ms": {
+      "xpath": [
+       270,
+       253.3,
+       271
+      ],
+      "uiautomator": [
+       244.6,
+       243.7,
+       232.1
+      ]
+     },
+     "median": {
+      "xpath": 270,
+      "uiautomator": 243.7
+     }
+    }
+   ]
+  },
+  {
+   "load": 1000,
+   "host": {
+    "cpu": "Apple M1 Pro",
+    "memoryGB": 16,
+    "macOS": "26.6.2",
+    "power": "AC",
+    "lowPowerMode": false
+   },
+   "guest": {
+    "load1": 0.95,
+    "waitedS": 0
+   },
+   "firstStart": {
+    "buildMs": 141,
+    "firstDrawMs": 239,
+    "readyMs": 394.1
+   },
+   "firstSourceMs": 573.1,
+   "elements": 1000,
+   "maxDepth": 39,
+   "targetDepths": {
+    "top": 8,
+    "deep": 39,
+    "end": 6
+   },
+   "passes": [
+    {
+     "guestLoadBefore": 1.08,
+     "waitedS": 0,
+     "buildMs": 78,
+     "firstDrawMs": 166,
+     "readyMs": 369.3,
+     "sourceMs": 730.6,
+     "errors": 0,
+     "hostQemuCpuPct": 127,
+     "guestLoadAfter": 1
+    },
+    {
+     "guestLoadBefore": 1,
+     "waitedS": 0,
+     "buildMs": 92,
+     "firstDrawMs": 192,
+     "readyMs": 335,
+     "sourceMs": 727,
+     "errors": 0,
+     "hostQemuCpuPct": 126.9,
+     "guestLoadAfter": 0.87
+    },
+    {
+     "guestLoadBefore": 0.87,
+     "waitedS": 0,
+     "buildMs": 72,
+     "firstDrawMs": 173,
+     "readyMs": 393.2,
+     "sourceMs": 714,
+     "errors": 0,
+     "hostQemuCpuPct": 125.6,
+     "guestLoadAfter": 0.73
+    }
+   ],
+   "discardedPasses": [],
+   "sourceMedianMs": 727,
+   "summary": {
+    "uiautomator": {
+     "cases": 30,
+     "xpathTotalMs": 16698.6,
+     "totalMs": 14555.8,
+     "savingMs": 2142.8,
+     "savingPct": 12.8,
+     "speedupGeomean": 1.15,
+     "faster": 30,
+     "byPosition": {
+      "top": {
+       "cases": 10,
+       "xpathTotalMs": 5468.5,
+       "totalMs": 4659,
+       "savingMs": 809.5,
+       "savingPct": 14.8,
+       "speedupGeomean": 1.18,
+       "faster": 10
+      },
+      "deep": {
+       "cases": 10,
+       "xpathTotalMs": 5574.2,
+       "totalMs": 4826.5,
+       "savingMs": 747.7,
+       "savingPct": 13.4,
+       "speedupGeomean": 1.16,
+       "faster": 10
+      },
+      "end": {
+       "cases": 10,
+       "xpathTotalMs": 5655.9,
+       "totalMs": 5070.3,
+       "savingMs": 585.6,
+       "savingPct": 10.4,
+       "speedupGeomean": 1.12,
+       "faster": 10
+      }
+     }
+    },
+    "id": {
+     "cases": 3,
+     "xpathTotalMs": 1300.9,
+     "totalMs": 1140.8,
+     "savingMs": 160.1,
+     "savingPct": 12.3,
+     "speedupGeomean": 1.14,
+     "faster": 3,
+     "byPosition": {
+      "top": {
+       "cases": 1,
+       "xpathTotalMs": 410.8,
+       "totalMs": 331.9,
+       "savingMs": 78.9,
+       "savingPct": 19.2,
+       "speedupGeomean": 1.24,
+       "faster": 1
+      },
+      "deep": {
+       "cases": 1,
+       "xpathTotalMs": 434.8,
+       "totalMs": 391.5,
+       "savingMs": 43.3,
+       "savingPct": 10,
+       "speedupGeomean": 1.11,
+       "faster": 1
+      },
+      "end": {
+       "cases": 1,
+       "xpathTotalMs": 455.3,
+       "totalMs": 417.4,
+       "savingMs": 37.9,
+       "savingPct": 8.3,
+       "speedupGeomean": 1.09,
+       "faster": 1
+      }
+     }
+    },
+    "accessibilityId": {
+     "cases": 3,
+     "xpathTotalMs": 1769.1,
+     "totalMs": 1576.5,
+     "savingMs": 192.6,
+     "savingPct": 10.9,
+     "speedupGeomean": 1.12,
+     "faster": 3,
+     "byPosition": {
+      "top": {
+       "cases": 1,
+       "xpathTotalMs": 589.7,
+       "totalMs": 514.5,
+       "savingMs": 75.2,
+       "savingPct": 12.8,
+       "speedupGeomean": 1.15,
+       "faster": 1
+      },
+      "deep": {
+       "cases": 1,
+       "xpathTotalMs": 580,
+       "totalMs": 531.6,
+       "savingMs": 48.4,
+       "savingPct": 8.3,
+       "speedupGeomean": 1.09,
+       "faster": 1
+      },
+      "end": {
+       "cases": 1,
+       "xpathTotalMs": 599.4,
+       "totalMs": 530.4,
+       "savingMs": 69,
+       "savingPct": 11.5,
+       "speedupGeomean": 1.13,
+       "faster": 1
+      }
+     }
+    }
+   },
+   "cases": [
+    {
+     "id": "S01-top",
+     "shape": 1,
+     "position": "top",
+     "locators": {
+      "xpath": "//android.widget.Button[@resource-id=\"io.github.domovou69.scalelab:id/nav_help\"]",
+      "uiautomator": "new UiSelector().className(\"android.widget.Button\").resourceId(\"io.github.domovou69.scalelab:id/nav_help\")",
+      "id": "io.github.domovou69.scalelab:id/nav_help"
+     },
+     "valid": true,
+     "hit": "android.widget.Button|io.github.domovou69.scalelab:id/nav_help|Help||[360,63][720,132]",
+     "ms": {
+      "xpath": [
+       410.8,
+       467.2,
+       406.6
+      ],
+      "uiautomator": [
+       296.4,
+       325.8,
+       330.2
+      ],
+      "id": [
+       331.9,
+       330.5,
+       344.7
+      ]
+     },
+     "median": {
+      "xpath": 410.8,
+      "uiautomator": 325.8,
+      "id": 331.9
+     }
+    },
+    {
+     "id": "S01-deep",
+     "shape": 1,
+     "position": "deep",
+     "locators": {
+      "xpath": "//android.widget.Button[@resource-id=\"io.github.domovou69.scalelab:id/review_helpful\"]",
+      "uiautomator": "new UiSelector().className(\"android.widget.Button\").resourceId(\"io.github.domovou69.scalelab:id/review_helpful\")",
+      "id": "io.github.domovou69.scalelab:id/review_helpful"
+     },
+     "valid": true,
+     "hit": "android.widget.Button|io.github.domovou69.scalelab:id/review_helpful|Yes, helpful||[0,960][540,1029]",
+     "ms": {
+      "xpath": [
+       438.6,
+       430.9,
+       434.8
+      ],
+      "uiautomator": [
+       368.1,
+       385.8,
+       355.9
+      ],
+      "id": [
+       390,
+       403.2,
+       391.5
+      ]
+     },
+     "median": {
+      "xpath": 434.8,
+      "uiautomator": 368.1,
+      "id": 391.5
+     }
+    },
+    {
+     "id": "S01-end",
+     "shape": 1,
+     "position": "end",
+     "locators": {
+      "xpath": "//android.widget.Button[@resource-id=\"io.github.domovou69.scalelab:id/checkout_placeOrder\"]",
+      "uiautomator": "new UiSelector().className(\"android.widget.Button\").resourceId(\"io.github.domovou69.scalelab:id/checkout_placeOrder\")",
+      "id": "io.github.domovou69.scalelab:id/checkout_placeOrder"
+     },
+     "valid": true,
+     "hit": "android.widget.Button|io.github.domovou69.scalelab:id/checkout_placeOrder|Place order||[0,2202][1080,2271]",
+     "ms": {
+      "xpath": [
+       455.3,
+       453.8,
+       528.9
+      ],
+      "uiautomator": [
+       435.9,
+       453.7,
+       411.6
+      ],
+      "id": [
+       417.4,
+       431.3,
+       394.2
+      ]
+     },
+     "median": {
+      "xpath": 455.3,
+      "uiautomator": 435.9,
+      "id": 417.4
+     }
+    },
+    {
+     "id": "S02-top",
+     "shape": 2,
+     "position": "top",
+     "locators": {
+      "xpath": "//android.widget.TextView[contains(@text,\"#1042\")]",
+      "uiautomator": "new UiSelector().className(\"android.widget.TextView\").textContains(\"#1042\")"
+     },
+     "valid": true,
+     "hit": "android.widget.TextView||Order #1042 · 3 items||[0,132][1080,201]",
+     "ms": {
+      "xpath": [
+       486.8,
+       482.2,
+       1008.1
+      ],
+      "uiautomator": [
+       392.2,
+       414.3,
+       419.2
+      ]
+     },
+     "median": {
+      "xpath": 486.8,
+      "uiautomator": 414.3
+     }
+    },
+    {
+     "id": "S02-deep",
+     "shape": 2,
+     "position": "deep",
+     "locators": {
+      "xpath": "//android.widget.TextView[contains(@text,\"Anna K\")]",
+      "uiautomator": "new UiSelector().className(\"android.widget.TextView\").textContains(\"Anna K\")"
+     },
+     "valid": true,
+     "hit": "android.widget.TextView||Reply from Anna K.||[0,615][1080,684]",
+     "ms": {
+      "xpath": [
+       465,
+       541.3,
+       482.5
+      ],
+      "uiautomator": [
+       410.5,
+       433.3,
+       435.3
+      ]
+     },
+     "median": {
+      "xpath": 482.5,
+      "uiautomator": 433.3
+     }
+    },
+    {
+     "id": "S02-end",
+     "shape": 2,
+     "position": "end",
+     "locators": {
+      "xpath": "//android.widget.TextView[contains(@text,\"Baker St\")]",
+      "uiautomator": "new UiSelector().className(\"android.widget.TextView\").textContains(\"Baker St\")"
+     },
+     "valid": true,
+     "hit": "android.widget.TextView||Delivery address: 12 Baker St, London||[0,1650][1080,1719]",
+     "ms": {
+      "xpath": [
+       680.7,
+       532.3,
+       499.2
+      ],
+      "uiautomator": [
+       408.9,
+       472.9,
+       461.2
+      ]
+     },
+     "median": {
+      "xpath": 532.3,
+      "uiautomator": 461.2
+     }
+    },
+    {
+     "id": "S03-top",
+     "shape": 3,
+     "position": "top",
+     "locators": {
+      "xpath": "//*[contains(@class,\"Button\") and contains(@text,\"promo code\")]",
+      "uiautomator": "new UiSelector().classNameMatches(\".*Button.*\").textContains(\"promo code\")"
+     },
+     "valid": true,
+     "hit": "android.widget.Button||Apply promo code||[540,408][1080,477]",
+     "ms": {
+      "xpath": [
+       499.1,
+       510.1,
+       493.6
+      ],
+      "uiautomator": [
+       416.1,
+       455.1,
+       420.8
+      ]
+     },
+     "median": {
+      "xpath": 499.1,
+      "uiautomator": 420.8
+     }
+    },
+    {
+     "id": "S03-deep",
+     "shape": 3,
+     "position": "deep",
+     "locators": {
+      "xpath": "//*[contains(@class,\"Button\") and contains(@text,\"more replies\")]",
+      "uiautomator": "new UiSelector().classNameMatches(\".*Button.*\").textContains(\"more replies\")"
+     },
+     "valid": true,
+     "hit": "android.widget.Button||Show 3 more replies||[0,1098][1080,1167]",
+     "ms": {
+      "xpath": [
+       502.1,
+       514,
+       497.2
+      ],
+      "uiautomator": [
+       393.7,
+       427,
+       423
+      ]
+     },
+     "median": {
+      "xpath": 502.1,
+      "uiautomator": 423
+     }
+    },
+    {
+     "id": "S03-end",
+     "shape": 3,
+     "position": "end",
+     "locators": {
+      "xpath": "//*[contains(@class,\"Button\") and contains(@text,\"payment method\")]",
+      "uiautomator": "new UiSelector().classNameMatches(\".*Button.*\").textContains(\"payment method\")"
+     },
+     "valid": true,
+     "hit": "android.widget.Button||Change payment method||[0,1857][1080,1926]",
+     "ms": {
+      "xpath": [
+       509.3,
+       531.1,
+       523.3
+      ],
+      "uiautomator": [
+       435,
+       488.4,
+       435.9
+      ]
+     },
+     "median": {
+      "xpath": 523.3,
+      "uiautomator": 435.9
+     }
+    },
+    {
+     "id": "S04-top",
+     "shape": 4,
+     "position": "top",
+     "locators": {
+      "xpath": "//android.widget.TextView[@text=\"Free delivery over $50\"]",
+      "uiautomator": "new UiSelector().className(\"android.widget.TextView\").text(\"Free delivery over $50\")"
+     },
+     "valid": true,
+     "hit": "android.widget.TextView||Free delivery over $50||[0,201][1080,270]",
+     "ms": {
+      "xpath": [
+       478.5,
+       519.8,
+       531.6
+      ],
+      "uiautomator": [
+       389.6,
+       441.2,
+       452.4
+      ]
+     },
+     "median": {
+      "xpath": 519.8,
+      "uiautomator": 441.2
+     }
+    },
+    {
+     "id": "S04-deep",
+     "shape": 4,
+     "position": "deep",
+     "locators": {
+      "xpath": "//android.widget.TextView[@text=\"Great fit, runs small\"]",
+      "uiautomator": "new UiSelector().className(\"android.widget.TextView\").text(\"Great fit, runs small\")"
+     },
+     "valid": true,
+     "hit": "android.widget.TextView||Great fit, runs small||[0,684][1080,753]",
+     "ms": {
+      "xpath": [
+       513.1,
+       523.5,
+       549.6
+      ],
+      "uiautomator": [
+       434,
+       445.8,
+       529.4
+      ]
+     },
+     "median": {
+      "xpath": 523.5,
+      "uiautomator": 445.8
+     }
+    },
+    {
+     "id": "S04-end",
+     "shape": 4,
+     "position": "end",
+     "locators": {
+      "xpath": "//android.widget.TextView[@text=\"Total: $148.97\"]",
+      "uiautomator": "new UiSelector().className(\"android.widget.TextView\").text(\"Total: $148.97\")"
+     },
+     "valid": true,
+     "hit": "android.widget.TextView||Total: $148.97||[0,1995][1080,2064]",
+     "ms": {
+      "xpath": [
+       528.2,
+       535.7,
+       584.5
+      ],
+      "uiautomator": [
+       416.5,
+       513.4,
+       539.4
+      ]
+     },
+     "median": {
+      "xpath": 535.7,
+      "uiautomator": 513.4
+     }
+    },
+    {
+     "id": "S05-top",
+     "shape": 5,
+     "position": "top",
+     "locators": {
+      "xpath": "//*[contains(@class,\"EditText\") and contains(@resource-id,\"codeInput\")]",
+      "uiautomator": "new UiSelector().classNameMatches(\".*EditText.*\").resourceIdMatches(\".*codeInput.*\")"
+     },
+     "valid": true,
+     "hit": "android.widget.EditText|io.github.domovou69.scalelab:id/promo_codeInput|Promo code||[0,408][540,477]",
+     "ms": {
+      "xpath": [
+       573.3,
+       622.4,
+       580.3
+      ],
+      "uiautomator": [
+       511.9,
+       480.4,
+       481.4
+      ]
+     },
+     "median": {
+      "xpath": 580.3,
+      "uiautomator": 481.4
+     }
+    },
+    {
+     "id": "S05-deep",
+     "shape": 5,
+     "position": "deep",
+     "locators": {
+      "xpath": "//*[contains(@class,\"EditText\") and contains(@resource-id,\"replyInput\")]",
+      "uiautomator": "new UiSelector().classNameMatches(\".*EditText.*\").resourceIdMatches(\".*replyInput.*\")"
+     },
+     "valid": true,
+     "hit": "android.widget.EditText|io.github.domovou69.scalelab:id/review_replyInput|Write a reply||[0,1167][1080,1236]",
+     "ms": {
+      "xpath": [
+       610.7,
+       597.3,
+       601.1
+      ],
+      "uiautomator": [
+       496.2,
+       523.9,
+       524.9
+      ]
+     },
+     "median": {
+      "xpath": 601.1,
+      "uiautomator": 523.9
+     }
+    },
+    {
+     "id": "S05-end",
+     "shape": 5,
+     "position": "end",
+     "locators": {
+      "xpath": "//*[contains(@class,\"EditText\") and contains(@resource-id,\"postcode\")]",
+      "uiautomator": "new UiSelector().classNameMatches(\".*EditText.*\").resourceIdMatches(\".*postcode.*\")"
+     },
+     "valid": true,
+     "hit": "android.widget.EditText|io.github.domovou69.scalelab:id/address_postcodeField|Postcode||[0,1719][1080,1788]",
+     "ms": {
+      "xpath": [
+       590.8,
+       598.7,
+       587.9
+      ],
+      "uiautomator": [
+       524.6,
+       518.9,
+       525.5
+      ]
+     },
+     "median": {
+      "xpath": 590.8,
+      "uiautomator": 524.6
+     }
+    },
+    {
+     "id": "S06-top",
+     "shape": 6,
+     "position": "top",
+     "locators": {
+      "xpath": "//android.widget.Button[contains(@content-desc,\"Edit cart\")]",
+      "uiautomator": "new UiSelector().className(\"android.widget.Button\").descriptionContains(\"Edit cart\")"
+     },
+     "valid": true,
+     "hit": "android.widget.Button||Edit cart (3)|Edit cart, 3 items|[0,477][1080,546]",
+     "ms": {
+      "xpath": [
+       572.7,
+       640.3,
+       555.2
+      ],
+      "uiautomator": [
+       517.7,
+       526,
+       479.2
+      ]
+     },
+     "median": {
+      "xpath": 572.7,
+      "uiautomator": 517.7
+     }
+    },
+    {
+     "id": "S06-deep",
+     "shape": 6,
+     "position": "deep",
+     "locators": {
+      "xpath": "//android.widget.Button[contains(@content-desc,\"Report rev\")]",
+      "uiautomator": "new UiSelector().className(\"android.widget.Button\").descriptionContains(\"Report rev\")"
+     },
+     "valid": true,
+     "hit": "android.widget.Button||Report review|Report review as abuse|[540,960][1080,1029]",
+     "ms": {
+      "xpath": [
+       598.7,
+       599.2,
+       576.9
+      ],
+      "uiautomator": [
+       543.6,
+       539.2,
+       524.8
+      ]
+     },
+     "median": {
+      "xpath": 598.7,
+      "uiautomator": 539.2
+     }
+    },
+    {
+     "id": "S06-end",
+     "shape": 6,
+     "position": "end",
+     "locators": {
+      "xpath": "//android.widget.Button[contains(@content-desc,\"Terms of\")]",
+      "uiautomator": "new UiSelector().className(\"android.widget.Button\").descriptionContains(\"Terms of\")"
+     },
+     "valid": true,
+     "hit": "android.widget.Button||Terms of sale|Terms of sale and returns|[0,2064][1080,2133]",
+     "ms": {
+      "xpath": [
+       588.5,
+       606.4,
+       561.3
+      ],
+      "uiautomator": [
+       544.9,
+       820.8,
+       529.7
+      ]
+     },
+     "median": {
+      "xpath": 588.5,
+      "uiautomator": 544.9
+     }
+    },
+    {
+     "id": "S07-top",
+     "shape": 7,
+     "position": "top",
+     "locators": {
+      "xpath": "//*[@content-desc=\"Flash sale banner\"]",
+      "uiautomator": "new UiSelector().description(\"Flash sale banner\")",
+      "accessibilityId": "Flash sale banner"
+     },
+     "valid": true,
+     "hit": "android.widget.TextView||Flash sale ends in 02:14:09|Flash sale banner|[0,339][1080,408]",
+     "ms": {
+      "xpath": [
+       589.7,
+       596.4,
+       580.7
+      ],
+      "uiautomator": [
+       667.6,
+       526.5,
+       499
+      ],
+      "accessibilityId": [
+       514.5,
+       502.7,
+       516.3
+      ]
+     },
+     "median": {
+      "xpath": 589.7,
+      "uiautomator": 526.5,
+      "accessibilityId": 514.5
+     }
+    },
+    {
+     "id": "S07-deep",
+     "shape": 7,
+     "position": "deep",
+     "locators": {
+      "xpath": "//*[@content-desc=\"Verified purchase badge\"]",
+      "uiautomator": "new UiSelector().description(\"Verified purchase badge\")",
+      "accessibilityId": "Verified purchase badge"
+     },
+     "valid": true,
+     "hit": "android.widget.TextView||Verified purchase · Size M|Verified purchase badge|[0,753][1080,822]",
+     "ms": {
+      "xpath": [
+       609,
+       580,
+       572.4
+      ],
+      "uiautomator": [
+       515.8,
+       486,
+       515.1
+      ],
+      "accessibilityId": [
+       544,
+       531.6,
+       514.1
+      ]
+     },
+     "median": {
+      "xpath": 580,
+      "uiautomator": 515.1,
+      "accessibilityId": 531.6
+     }
+    },
+    {
+     "id": "S07-end",
+     "shape": 7,
+     "position": "end",
+     "locators": {
+      "xpath": "//*[@content-desc=\"Order help\"]",
+      "uiautomator": "new UiSelector().description(\"Order help\")",
+      "accessibilityId": "Order help"
+     },
+     "valid": true,
+     "hit": "android.widget.Button||Need help with your order?|Order help|[0,2133][1080,2202]",
+     "ms": {
+      "xpath": [
+       598.7,
+       599.4,
+       601.8
+      ],
+      "uiautomator": [
+       508.2,
+       524.3,
+       526.9
+      ],
+      "accessibilityId": [
+       530.4,
+       547.6,
+       528.5
+      ]
+     },
+     "median": {
+      "xpath": 599.4,
+      "uiautomator": 524.3,
+      "accessibilityId": 530.4
+     }
+    },
+    {
+     "id": "S08-top",
+     "shape": 8,
+     "position": "top",
+     "locators": {
+      "xpath": "(//android.widget.Button[@text=\"Add to cart\"])[2]",
+      "uiautomator": "new UiSelector().className(\"android.widget.Button\").text(\"Add to cart\").instance(1)"
+     },
+     "valid": true,
+     "hit": "android.widget.Button||Add to cart||[360,580][720,614]",
+     "ms": {
+      "xpath": [
+       598.3,
+       606.8,
+       595.1
+      ],
+      "uiautomator": [
+       504.9,
+       507.2,
+       504.3
+      ]
+     },
+     "median": {
+      "xpath": 598.3,
+      "uiautomator": 504.9
+     }
+    },
+    {
+     "id": "S08-deep",
+     "shape": 8,
+     "position": "deep",
+     "locators": {
+      "xpath": "(//android.widget.Button[@text=\"Reply\"])[2]",
+      "uiautomator": "new UiSelector().className(\"android.widget.Button\").text(\"Reply\").instance(1)"
+     },
+     "valid": true,
+     "hit": "android.widget.Button||Reply||[360,1029][720,1098]",
+     "ms": {
+      "xpath": [
+       623.4,
+       619.3,
+       602
+      ],
+      "uiautomator": [
+       533.3,
+       570,
+       524.2
+      ]
+     },
+     "median": {
+      "xpath": 619.3,
+      "uiautomator": 533.3
+     }
+    },
+    {
+     "id": "S08-end",
+     "shape": 8,
+     "position": "end",
+     "locators": {
+      "xpath": "(//android.widget.Button[@text=\"Remove\"])[3]",
+      "uiautomator": "new UiSelector().className(\"android.widget.Button\").text(\"Remove\").instance(2)"
+     },
+     "valid": true,
+     "hit": "android.widget.Button||Remove||[540,1374][1080,1443]",
+     "ms": {
+      "xpath": [
+       613.9,
+       611.8,
+       605.5
+      ],
+      "uiautomator": [
+       526.4,
+       536,
+       561.2
+      ]
+     },
+     "median": {
+      "xpath": 611.8,
+      "uiautomator": 536
+     }
+    },
+    {
+     "id": "S09-top",
+     "shape": 9,
+     "position": "top",
+     "locators": {
+      "xpath": "//*[@resource-id=\"io.github.domovou69.scalelab:id/cart_badge\" and @text=\"3 items\"]",
+      "uiautomator": "new UiSelector().resourceId(\"io.github.domovou69.scalelab:id/cart_badge\").text(\"3 items\")"
+     },
+     "valid": true,
+     "hit": "android.widget.Button|io.github.domovou69.scalelab:id/cart_badge|3 items||[720,63][1080,132]",
+     "ms": {
+      "xpath": [
+       643.3,
+       608,
+       618.1
+      ],
+      "uiautomator": [
+       503.4,
+       497.6,
+       537.3
+      ]
+     },
+     "median": {
+      "xpath": 618.1,
+      "uiautomator": 503.4
+     }
+    },
+    {
+     "id": "S09-deep",
+     "shape": 9,
+     "position": "deep",
+     "locators": {
+      "xpath": "//*[@resource-id=\"io.github.domovou69.scalelab:id/review_helpfulPrompt\" and @text=\"Was this helpful?\"]",
+      "uiautomator": "new UiSelector().resourceId(\"io.github.domovou69.scalelab:id/review_helpfulPrompt\").text(\"Was this helpful?\")"
+     },
+     "valid": true,
+     "hit": "android.widget.TextView|io.github.domovou69.scalelab:id/review_helpfulPrompt|Was this helpful?||[0,891][1080,960]",
+     "ms": {
+      "xpath": [
+       635.7,
+       616.8,
+       606.6
+      ],
+      "uiautomator": [
+       527,
+       514.8,
+       519.3
+      ]
+     },
+     "median": {
+      "xpath": 616.8,
+      "uiautomator": 519.3
+     }
+    },
+    {
+     "id": "S09-end",
+     "shape": 9,
+     "position": "end",
+     "locators": {
+      "xpath": "//*[@resource-id=\"io.github.domovou69.scalelab:id/checkout_saveAddress\" and @text=\"Save address\"]",
+      "uiautomator": "new UiSelector().resourceId(\"io.github.domovou69.scalelab:id/checkout_saveAddress\").text(\"Save address\")"
+     },
+     "valid": true,
+     "hit": "android.widget.Button|io.github.domovou69.scalelab:id/checkout_saveAddress|Save address||[0,1788][1080,1857]",
+     "ms": {
+      "xpath": [
+       613.8,
+       614.3,
+       623.9
+      ],
+      "uiautomator": [
+       512.1,
+       561.1,
+       548.2
+      ]
+     },
+     "median": {
+      "xpath": 614.3,
+      "uiautomator": 548.2
+     }
+    },
+    {
+     "id": "S10-top",
+     "shape": 10,
+     "position": "top",
+     "locators": {
+      "xpath": "//*[contains(@resource-id,\"deliveryInfo\")]/child::android.widget.TextView[@text=\"Arrives Tue, Oct 14\"]",
+      "uiautomator": "new UiSelector().resourceIdMatches(\".*deliveryInfo.*\").childSelector(new UiSelector().className(\"android.widget.TextView\").text(\"Arrives Tue, Oct 14\"))"
+     },
+     "valid": true,
+     "hit": "android.widget.TextView||Arrives Tue, Oct 14||[0,270][1080,339]",
+     "ms": {
+      "xpath": [
+       588.2,
+       625.8,
+       592.9
+      ],
+      "uiautomator": [
+       509.5,
+       523,
+       539.5
+      ]
+     },
+     "median": {
+      "xpath": 592.9,
+      "uiautomator": 523
+     }
+    },
+    {
+     "id": "S10-deep",
+     "shape": 10,
+     "position": "deep",
+     "locators": {
+      "xpath": "//*[contains(@resource-id,\"replyMeta\")]/child::android.widget.TextView[@text=\"Posted 2 days ago\"]",
+      "uiautomator": "new UiSelector().resourceIdMatches(\".*replyMeta.*\").childSelector(new UiSelector().className(\"android.widget.TextView\").text(\"Posted 2 days ago\"))"
+     },
+     "valid": true,
+     "hit": "android.widget.TextView||Posted 2 days ago||[0,822][1080,891]",
+     "ms": {
+      "xpath": [
+       615.4,
+       620.1,
+       612.7
+      ],
+      "uiautomator": [
+       548,
+       525.5,
+       521.6
+      ]
+     },
+     "median": {
+      "xpath": 615.4,
+      "uiautomator": 525.5
+     }
+    },
+    {
+     "id": "S10-end",
+     "shape": 10,
+     "position": "end",
+     "locators": {
+      "xpath": "//*[contains(@resource-id,\"summary_taxes\")]/child::android.widget.TextView[@text=\"Taxes: $11.02\"]",
+      "uiautomator": "new UiSelector().resourceIdMatches(\".*summary_taxes.*\").childSelector(new UiSelector().className(\"android.widget.TextView\").text(\"Taxes: $11.02\"))"
+     },
+     "valid": true,
+     "hit": "android.widget.TextView||Taxes: $11.02||[0,1926][1080,1995]",
+     "ms": {
+      "xpath": [
+       595.7,
+       620.9,
+       604.5
+      ],
+      "uiautomator": [
+       544.9,
+       559.1,
+       545.9
+      ]
+     },
+     "median": {
+      "xpath": 604.5,
+      "uiautomator": 545.9
+     }
+    }
+   ]
+  },
+  {
+   "load": 2000,
+   "host": {
+    "cpu": "Apple M1 Pro",
+    "memoryGB": 16,
+    "macOS": "26.6.2",
+    "power": "AC",
+    "lowPowerMode": false
+   },
+   "guest": {
+    "load1": 1.41,
+    "waitedS": 0
+   },
+   "firstStart": {
+    "buildMs": 166,
+    "firstDrawMs": 301,
+    "readyMs": 753
+   },
+   "firstSourceMs": 1253.6,
+   "elements": 1989,
+   "maxDepth": 39,
+   "targetDepths": {
+    "top": 8,
+    "deep": 39,
+    "end": 6
+   },
+   "passes": [
+    {
+     "guestLoadBefore": 1,
+     "waitedS": 0,
+     "buildMs": 151,
+     "firstDrawMs": 246,
+     "readyMs": 647.8,
+     "sourceMs": 1439.3,
+     "errors": 0,
+     "hostQemuCpuPct": 125.2,
+     "guestLoadAfter": 0.85
+    },
+    {
+     "guestLoadBefore": 0.85,
+     "waitedS": 0,
+     "buildMs": 104,
+     "firstDrawMs": 231,
+     "readyMs": 716.5,
+     "sourceMs": 1453.6,
+     "errors": 0,
+     "hostQemuCpuPct": 125.5,
+     "guestLoadAfter": 0.59
+    },
+    {
+     "guestLoadBefore": 0.59,
+     "waitedS": 0,
+     "buildMs": 165,
+     "firstDrawMs": 347,
+     "readyMs": 681.3,
+     "sourceMs": 1453.6,
+     "errors": 0,
+     "hostQemuCpuPct": 125.4,
+     "guestLoadAfter": 0.95
+    }
+   ],
+   "discardedPasses": [],
+   "sourceMedianMs": 1453.6,
+   "summary": {
+    "uiautomator": {
+     "cases": 30,
+     "xpathTotalMs": 34507,
+     "totalMs": 30524.4,
+     "savingMs": 3982.6,
+     "savingPct": 11.5,
+     "speedupGeomean": 1.13,
+     "faster": 30,
+     "byPosition": {
+      "top": {
+       "cases": 10,
+       "xpathTotalMs": 11236,
+       "totalMs": 9931.6,
+       "savingMs": 1304.4,
+       "savingPct": 11.6,
+       "speedupGeomean": 1.13,
+       "faster": 10
+      },
+      "deep": {
+       "cases": 10,
+       "xpathTotalMs": 11607.6,
+       "totalMs": 10197.9,
+       "savingMs": 1409.7,
+       "savingPct": 12.1,
+       "speedupGeomean": 1.14,
+       "faster": 10
+      },
+      "end": {
+       "cases": 10,
+       "xpathTotalMs": 11663.4,
+       "totalMs": 10394.9,
+       "savingMs": 1268.5,
+       "savingPct": 10.9,
+       "speedupGeomean": 1.12,
+       "faster": 10
+      }
+     }
+    },
+    "id": {
+     "cases": 3,
+     "xpathTotalMs": 2814.5,
+     "totalMs": 2363.9,
+     "savingMs": 450.6,
+     "savingPct": 16,
+     "speedupGeomean": 1.19,
+     "faster": 3,
+     "byPosition": {
+      "top": {
+       "cases": 1,
+       "xpathTotalMs": 792.1,
+       "totalMs": 654.8,
+       "savingMs": 137.3,
+       "savingPct": 17.3,
+       "speedupGeomean": 1.21,
+       "faster": 1
+      },
+      "deep": {
+       "cases": 1,
+       "xpathTotalMs": 1012,
+       "totalMs": 827.3,
+       "savingMs": 184.7,
+       "savingPct": 18.3,
+       "speedupGeomean": 1.22,
+       "faster": 1
+      },
+      "end": {
+       "cases": 1,
+       "xpathTotalMs": 1010.4,
+       "totalMs": 881.8,
+       "savingMs": 128.6,
+       "savingPct": 12.7,
+       "speedupGeomean": 1.15,
+       "faster": 1
+      }
+     }
+    },
+    "accessibilityId": {
+     "cases": 3,
+     "xpathTotalMs": 3555.9,
+     "totalMs": 3252.3,
+     "savingMs": 303.6,
+     "savingPct": 8.5,
+     "speedupGeomean": 1.09,
+     "faster": 3,
+     "byPosition": {
+      "top": {
+       "cases": 1,
+       "xpathTotalMs": 1188.3,
+       "totalMs": 1085.4,
+       "savingMs": 102.9,
+       "savingPct": 8.7,
+       "speedupGeomean": 1.09,
+       "faster": 1
+      },
+      "deep": {
+       "cases": 1,
+       "xpathTotalMs": 1169.9,
+       "totalMs": 1070.4,
+       "savingMs": 99.5,
+       "savingPct": 8.5,
+       "speedupGeomean": 1.09,
+       "faster": 1
+      },
+      "end": {
+       "cases": 1,
+       "xpathTotalMs": 1197.7,
+       "totalMs": 1096.5,
+       "savingMs": 101.2,
+       "savingPct": 8.4,
+       "speedupGeomean": 1.09,
+       "faster": 1
+      }
+     }
+    }
+   },
+   "cases": [
+    {
+     "id": "S01-top",
+     "shape": 1,
+     "position": "top",
+     "locators": {
+      "xpath": "//android.widget.Button[@resource-id=\"io.github.domovou69.scalelab:id/nav_help\"]",
+      "uiautomator": "new UiSelector().className(\"android.widget.Button\").resourceId(\"io.github.domovou69.scalelab:id/nav_help\")",
+      "id": "io.github.domovou69.scalelab:id/nav_help"
+     },
+     "valid": true,
+     "hit": "android.widget.Button|io.github.domovou69.scalelab:id/nav_help|Help||[360,63][720,132]",
+     "ms": {
+      "xpath": [
+       896.1,
+       792.1,
+       749.8
+      ],
+      "uiautomator": [
+       738.8,
+       791.2,
+       784.1
+      ],
+      "id": [
+       788.5,
+       654.8,
+       644.2
+      ]
+     },
+     "median": {
+      "xpath": 792.1,
+      "uiautomator": 784.1,
+      "id": 654.8
+     }
+    },
+    {
+     "id": "S01-deep",
+     "shape": 1,
+     "position": "deep",
+     "locators": {
+      "xpath": "//android.widget.Button[@resource-id=\"io.github.domovou69.scalelab:id/review_helpful\"]",
+      "uiautomator": "new UiSelector().className(\"android.widget.Button\").resourceId(\"io.github.domovou69.scalelab:id/review_helpful\")",
+      "id": "io.github.domovou69.scalelab:id/review_helpful"
+     },
+     "valid": true,
+     "hit": "android.widget.Button|io.github.domovou69.scalelab:id/review_helpful|Yes, helpful||[0,960][540,1029]",
+     "ms": {
+      "xpath": [
+       1012,
+       1035.1,
+       870.4
+      ],
+      "uiautomator": [
+       834.1,
+       1006.8,
+       833.4
+      ],
+      "id": [
+       900.1,
+       782.6,
+       827.3
+      ]
+     },
+     "median": {
+      "xpath": 1012,
+      "uiautomator": 834.1,
+      "id": 827.3
+     }
+    },
+    {
+     "id": "S01-end",
+     "shape": 1,
+     "position": "end",
+     "locators": {
+      "xpath": "//android.widget.Button[@resource-id=\"io.github.domovou69.scalelab:id/checkout_placeOrder\"]",
+      "uiautomator": "new UiSelector().className(\"android.widget.Button\").resourceId(\"io.github.domovou69.scalelab:id/checkout_placeOrder\")",
+      "id": "io.github.domovou69.scalelab:id/checkout_placeOrder"
+     },
+     "valid": true,
+     "hit": "android.widget.Button|io.github.domovou69.scalelab:id/checkout_placeOrder|Place order||[0,2202][1080,2271]",
+     "ms": {
+      "xpath": [
+       1035.6,
+       1010.4,
+       999.4
+      ],
+      "uiautomator": [
+       960,
+       842,
+       888.9
+      ],
+      "id": [
+       922.3,
+       881.8,
+       868.7
+      ]
+     },
+     "median": {
+      "xpath": 1010.4,
+      "uiautomator": 888.9,
+      "id": 881.8
+     }
+    },
+    {
+     "id": "S02-top",
+     "shape": 2,
+     "position": "top",
+     "locators": {
+      "xpath": "//android.widget.TextView[contains(@text,\"#1042\")]",
+      "uiautomator": "new UiSelector().className(\"android.widget.TextView\").textContains(\"#1042\")"
+     },
+     "valid": true,
+     "hit": "android.widget.TextView||Order #1042 · 3 items||[0,132][1080,201]",
+     "ms": {
+      "xpath": [
+       1079.5,
+       1020.7,
+       1009.8
+      ],
+      "uiautomator": [
+       849.2,
+       857.3,
+       819.7
+      ]
+     },
+     "median": {
+      "xpath": 1020.7,
+      "uiautomator": 849.2
+     }
+    },
+    {
+     "id": "S02-deep",
+     "shape": 2,
+     "position": "deep",
+     "locators": {
+      "xpath": "//android.widget.TextView[contains(@text,\"Anna K\")]",
+      "uiautomator": "new UiSelector().className(\"android.widget.TextView\").textContains(\"Anna K\")"
+     },
+     "valid": true,
+     "hit": "android.widget.TextView||Reply from Anna K.||[0,615][1080,684]",
+     "ms": {
+      "xpath": [
+       1144.8,
+       1045.5,
+       1308.9
+      ],
+      "uiautomator": [
+       986.7,
+       980.3,
+       1008.6
+      ]
+     },
+     "median": {
+      "xpath": 1144.8,
+      "uiautomator": 986.7
+     }
+    },
+    {
+     "id": "S02-end",
+     "shape": 2,
+     "position": "end",
+     "locators": {
+      "xpath": "//android.widget.TextView[contains(@text,\"Baker St\")]",
+      "uiautomator": "new UiSelector().className(\"android.widget.TextView\").textContains(\"Baker St\")"
+     },
+     "valid": true,
+     "hit": "android.widget.TextView||Delivery address: 12 Baker St, London||[0,1650][1080,1719]",
+     "ms": {
+      "xpath": [
+       1143.6,
+       1136.2,
+       1166.6
+      ],
+      "uiautomator": [
+       1055.7,
+       1043.5,
+       1060.4
+      ]
+     },
+     "median": {
+      "xpath": 1143.6,
+      "uiautomator": 1055.7
+     }
+    },
+    {
+     "id": "S03-top",
+     "shape": 3,
+     "position": "top",
+     "locators": {
+      "xpath": "//*[contains(@class,\"Button\") and contains(@text,\"promo code\")]",
+      "uiautomator": "new UiSelector().classNameMatches(\".*Button.*\").textContains(\"promo code\")"
+     },
+     "valid": true,
+     "hit": "android.widget.Button||Apply promo code||[540,408][1080,477]",
+     "ms": {
+      "xpath": [
+       1176.1,
+       1186.9,
+       1184.8
+      ],
+      "uiautomator": [
+       1019.4,
+       887.3,
+       1001.2
+      ]
+     },
+     "median": {
+      "xpath": 1184.8,
+      "uiautomator": 1001.2
+     }
+    },
+    {
+     "id": "S03-deep",
+     "shape": 3,
+     "position": "deep",
+     "locators": {
+      "xpath": "//*[contains(@class,\"Button\") and contains(@text,\"more replies\")]",
+      "uiautomator": "new UiSelector().classNameMatches(\".*Button.*\").textContains(\"more replies\")"
+     },
+     "valid": true,
+     "hit": "android.widget.Button||Show 3 more replies||[0,1098][1080,1167]",
+     "ms": {
+      "xpath": [
+       1146,
+       1192.1,
+       1146.2
+      ],
+      "uiautomator": [
+       1037.1,
+       1034.2,
+       1069.3
+      ]
+     },
+     "median": {
+      "xpath": 1146.2,
+      "uiautomator": 1037.1
+     }
+    },
+    {
+     "id": "S03-end",
+     "shape": 3,
+     "position": "end",
+     "locators": {
+      "xpath": "//*[contains(@class,\"Button\") and contains(@text,\"payment method\")]",
+      "uiautomator": "new UiSelector().classNameMatches(\".*Button.*\").textContains(\"payment method\")"
+     },
+     "valid": true,
+     "hit": "android.widget.Button||Change payment method||[0,1857][1080,1926]",
+     "ms": {
+      "xpath": [
+       1202.4,
+       1121.6,
+       1146.9
+      ],
+      "uiautomator": [
+       1100.3,
+       992.2,
+       1021.7
+      ]
+     },
+     "median": {
+      "xpath": 1146.9,
+      "uiautomator": 1021.7
+     }
+    },
+    {
+     "id": "S04-top",
+     "shape": 4,
+     "position": "top",
+     "locators": {
+      "xpath": "//android.widget.TextView[@text=\"Free delivery over $50\"]",
+      "uiautomator": "new UiSelector().className(\"android.widget.TextView\").text(\"Free delivery over $50\")"
+     },
+     "valid": true,
+     "hit": "android.widget.TextView||Free delivery over $50||[0,201][1080,270]",
+     "ms": {
+      "xpath": [
+       1213.5,
+       1139.7,
+       1154.9
+      ],
+      "uiautomator": [
+       1062.7,
+       1014.5,
+       994.4
+      ]
+     },
+     "median": {
+      "xpath": 1154.9,
+      "uiautomator": 1014.5
+     }
+    },
+    {
+     "id": "S04-deep",
+     "shape": 4,
+     "position": "deep",
+     "locators": {
+      "xpath": "//android.widget.TextView[@text=\"Great fit, runs small\"]",
+      "uiautomator": "new UiSelector().className(\"android.widget.TextView\").text(\"Great fit, runs small\")"
+     },
+     "valid": true,
+     "hit": "android.widget.TextView||Great fit, runs small||[0,684][1080,753]",
+     "ms": {
+      "xpath": [
+       1198,
+       1171.9,
+       1127.2
+      ],
+      "uiautomator": [
+       1038.8,
+       1016.6,
+       987.8
+      ]
+     },
+     "median": {
+      "xpath": 1171.9,
+      "uiautomator": 1016.6
+     }
+    },
+    {
+     "id": "S04-end",
+     "shape": 4,
+     "position": "end",
+     "locators": {
+      "xpath": "//android.widget.TextView[@text=\"Total: $148.97\"]",
+      "uiautomator": "new UiSelector().className(\"android.widget.TextView\").text(\"Total: $148.97\")"
+     },
+     "valid": true,
+     "hit": "android.widget.TextView||Total: $148.97||[0,1995][1080,2064]",
+     "ms": {
+      "xpath": [
+       1277.5,
+       1168.3,
+       1140.8
+      ],
+      "uiautomator": [
+       1094.3,
+       1036.5,
+       1024.4
+      ]
+     },
+     "median": {
+      "xpath": 1168.3,
+      "uiautomator": 1036.5
+     }
+    },
+    {
+     "id": "S05-top",
+     "shape": 5,
+     "position": "top",
+     "locators": {
+      "xpath": "//*[contains(@class,\"EditText\") and contains(@resource-id,\"codeInput\")]",
+      "uiautomator": "new UiSelector().classNameMatches(\".*EditText.*\").resourceIdMatches(\".*codeInput.*\")"
+     },
+     "valid": true,
+     "hit": "android.widget.EditText|io.github.domovou69.scalelab:id/promo_codeInput|Promo code||[0,408][540,477]",
+     "ms": {
+      "xpath": [
+       1153.6,
+       1170.9,
+       1138.5
+      ],
+      "uiautomator": [
+       1079.7,
+       1025.4,
+       1025.5
+      ]
+     },
+     "median": {
+      "xpath": 1153.6,
+      "uiautomator": 1025.5
+     }
+    },
+    {
+     "id": "S05-deep",
+     "shape": 5,
+     "position": "deep",
+     "locators": {
+      "xpath": "//*[contains(@class,\"EditText\") and contains(@resource-id,\"replyInput\")]",
+      "uiautomator": "new UiSelector().classNameMatches(\".*EditText.*\").resourceIdMatches(\".*replyInput.*\")"
+     },
+     "valid": true,
+     "hit": "android.widget.EditText|io.github.domovou69.scalelab:id/review_replyInput|Write a reply||[0,1167][1080,1236]",
+     "ms": {
+      "xpath": [
+       1566.1,
+       1158.1,
+       1168.5
+      ],
+      "uiautomator": [
+       1060.4,
+       1073.8,
+       1061.1
+      ]
+     },
+     "median": {
+      "xpath": 1168.5,
+      "uiautomator": 1061.1
+     }
+    },
+    {
+     "id": "S05-end",
+     "shape": 5,
+     "position": "end",
+     "locators": {
+      "xpath": "//*[contains(@class,\"EditText\") and contains(@resource-id,\"postcode\")]",
+      "uiautomator": "new UiSelector().classNameMatches(\".*EditText.*\").resourceIdMatches(\".*postcode.*\")"
+     },
+     "valid": true,
+     "hit": "android.widget.EditText|io.github.domovou69.scalelab:id/address_postcodeField|Postcode||[0,1719][1080,1788]",
+     "ms": {
+      "xpath": [
+       1174.1,
+       1187.2,
+       1198
+      ],
+      "uiautomator": [
+       1046.7,
+       1044.5,
+       1081
+      ]
+     },
+     "median": {
+      "xpath": 1187.2,
+      "uiautomator": 1046.7
+     }
+    },
+    {
+     "id": "S06-top",
+     "shape": 6,
+     "position": "top",
+     "locators": {
+      "xpath": "//android.widget.Button[contains(@content-desc,\"Edit cart\")]",
+      "uiautomator": "new UiSelector().className(\"android.widget.Button\").descriptionContains(\"Edit cart\")"
+     },
+     "valid": true,
+     "hit": "android.widget.Button||Edit cart (3)|Edit cart, 3 items|[0,477][1080,546]",
+     "ms": {
+      "xpath": [
+       1273,
+       1121.6,
+       1159.4
+      ],
+      "uiautomator": [
+       1119,
+       996.8,
+       1046.4
+      ]
+     },
+     "median": {
+      "xpath": 1159.4,
+      "uiautomator": 1046.4
+     }
+    },
+    {
+     "id": "S06-deep",
+     "shape": 6,
+     "position": "deep",
+     "locators": {
+      "xpath": "//android.widget.Button[contains(@content-desc,\"Report rev\")]",
+      "uiautomator": "new UiSelector().className(\"android.widget.Button\").descriptionContains(\"Report rev\")"
+     },
+     "valid": true,
+     "hit": "android.widget.Button||Report review|Report review as abuse|[540,960][1080,1029]",
+     "ms": {
+      "xpath": [
+       1193.6,
+       1166.5,
+       1180.8
+      ],
+      "uiautomator": [
+       1085.9,
+       1037.8,
+       1012.6
+      ]
+     },
+     "median": {
+      "xpath": 1180.8,
+      "uiautomator": 1037.8
+     }
+    },
+    {
+     "id": "S06-end",
+     "shape": 6,
+     "position": "end",
+     "locators": {
+      "xpath": "//android.widget.Button[contains(@content-desc,\"Terms of\")]",
+      "uiautomator": "new UiSelector().className(\"android.widget.Button\").descriptionContains(\"Terms of\")"
+     },
+     "valid": true,
+     "hit": "android.widget.Button||Terms of sale|Terms of sale and returns|[0,2064][1080,2133]",
+     "ms": {
+      "xpath": [
+       1232.5,
+       1191,
+       1200.2
+      ],
+      "uiautomator": [
+       1099.1,
+       1025.9,
+       1032.6
+      ]
+     },
+     "median": {
+      "xpath": 1200.2,
+      "uiautomator": 1032.6
+     }
+    },
+    {
+     "id": "S07-top",
+     "shape": 7,
+     "position": "top",
+     "locators": {
+      "xpath": "//*[@content-desc=\"Flash sale banner\"]",
+      "uiautomator": "new UiSelector().description(\"Flash sale banner\")",
+      "accessibilityId": "Flash sale banner"
+     },
+     "valid": true,
+     "hit": "android.widget.TextView||Flash sale ends in 02:14:09|Flash sale banner|[0,339][1080,408]",
+     "ms": {
+      "xpath": [
+       1188.3,
+       1178.5,
+       1191.3
+      ],
+      "uiautomator": [
+       1106.8,
+       1046.1,
+       1010.6
+      ],
+      "accessibilityId": [
+       1174.8,
+       1048.8,
+       1085.4
+      ]
+     },
+     "median": {
+      "xpath": 1188.3,
+      "uiautomator": 1046.1,
+      "accessibilityId": 1085.4
+     }
+    },
+    {
+     "id": "S07-deep",
+     "shape": 7,
+     "position": "deep",
+     "locators": {
+      "xpath": "//*[@content-desc=\"Verified purchase badge\"]",
+      "uiautomator": "new UiSelector().description(\"Verified purchase badge\")",
+      "accessibilityId": "Verified purchase badge"
+     },
+     "valid": true,
+     "hit": "android.widget.TextView||Verified purchase · Size M|Verified purchase badge|[0,753][1080,822]",
+     "ms": {
+      "xpath": [
+       1173.5,
+       1169.9,
+       1169.5
+      ],
+      "uiautomator": [
+       1103.7,
+       1061.2,
+       1045.1
+      ],
+      "accessibilityId": [
+       1056,
+       1070.4,
+       1077.3
+      ]
+     },
+     "median": {
+      "xpath": 1169.9,
+      "uiautomator": 1061.2,
+      "accessibilityId": 1070.4
+     }
+    },
+    {
+     "id": "S07-end",
+     "shape": 7,
+     "position": "end",
+     "locators": {
+      "xpath": "//*[@content-desc=\"Order help\"]",
+      "uiautomator": "new UiSelector().description(\"Order help\")",
+      "accessibilityId": "Order help"
+     },
+     "valid": true,
+     "hit": "android.widget.Button||Need help with your order?|Order help|[0,2133][1080,2202]",
+     "ms": {
+      "xpath": [
+       1252.2,
+       1197.7,
+       1173
+      ],
+      "uiautomator": [
+       1517.5,
+       1056.2,
+       1082.6
+      ],
+      "accessibilityId": [
+       1156.2,
+       1064.7,
+       1096.5
+      ]
+     },
+     "median": {
+      "xpath": 1197.7,
+      "uiautomator": 1082.6,
+      "accessibilityId": 1096.5
+     }
+    },
+    {
+     "id": "S08-top",
+     "shape": 8,
+     "position": "top",
+     "locators": {
+      "xpath": "(//android.widget.Button[@text=\"Add to cart\"])[2]",
+      "uiautomator": "new UiSelector().className(\"android.widget.Button\").text(\"Add to cart\").instance(1)"
+     },
+     "valid": true,
+     "hit": "android.widget.Button||Add to cart||[360,580][720,614]",
+     "ms": {
+      "xpath": [
+       1305.5,
+       1171.5,
+       1173.6
+      ],
+      "uiautomator": [
+       1077.4,
+       1077.1,
+       1008.2
+      ]
+     },
+     "median": {
+      "xpath": 1173.6,
+      "uiautomator": 1077.1
+     }
+    },
+    {
+     "id": "S08-deep",
+     "shape": 8,
+     "position": "deep",
+     "locators": {
+      "xpath": "(//android.widget.Button[@text=\"Reply\"])[2]",
+      "uiautomator": "new UiSelector().className(\"android.widget.Button\").text(\"Reply\").instance(1)"
+     },
+     "valid": true,
+     "hit": "android.widget.Button||Reply||[360,1029][720,1098]",
+     "ms": {
+      "xpath": [
+       1223.3,
+       1194,
+       1205.6
+      ],
+      "uiautomator": [
+       1042.8,
+       1066,
+       1038.1
+      ]
+     },
+     "median": {
+      "xpath": 1205.6,
+      "uiautomator": 1042.8
+     }
+    },
+    {
+     "id": "S08-end",
+     "shape": 8,
+     "position": "end",
+     "locators": {
+      "xpath": "(//android.widget.Button[@text=\"Remove\"])[3]",
+      "uiautomator": "new UiSelector().className(\"android.widget.Button\").text(\"Remove\").instance(2)"
+     },
+     "valid": true,
+     "hit": "android.widget.Button||Remove||[540,1374][1080,1443]",
+     "ms": {
+      "xpath": [
+       1187.7,
+       1183.3,
+       1219
+      ],
+      "uiautomator": [
+       1096.2,
+       1067.3,
+       1083.9
+      ]
+     },
+     "median": {
+      "xpath": 1187.7,
+      "uiautomator": 1083.9
+     }
+    },
+    {
+     "id": "S09-top",
+     "shape": 9,
+     "position": "top",
+     "locators": {
+      "xpath": "//*[@resource-id=\"io.github.domovou69.scalelab:id/cart_badge\" and @text=\"3 items\"]",
+      "uiautomator": "new UiSelector().resourceId(\"io.github.domovou69.scalelab:id/cart_badge\").text(\"3 items\")"
+     },
+     "valid": true,
+     "hit": "android.widget.Button|io.github.domovou69.scalelab:id/cart_badge|3 items||[720,63][1080,132]",
+     "ms": {
+      "xpath": [
+       1184.3,
+       1243.7,
+       1204.7
+      ],
+      "uiautomator": [
+       1039.5,
+       1036.7,
+       1009.3
+      ]
+     },
+     "median": {
+      "xpath": 1204.7,
+      "uiautomator": 1036.7
+     }
+    },
+    {
+     "id": "S09-deep",
+     "shape": 9,
+     "position": "deep",
+     "locators": {
+      "xpath": "//*[@resource-id=\"io.github.domovou69.scalelab:id/review_helpfulPrompt\" and @text=\"Was this helpful?\"]",
+      "uiautomator": "new UiSelector().resourceId(\"io.github.domovou69.scalelab:id/review_helpfulPrompt\").text(\"Was this helpful?\")"
+     },
+     "valid": true,
+     "hit": "android.widget.TextView|io.github.domovou69.scalelab:id/review_helpfulPrompt|Was this helpful?||[0,891][1080,960]",
+     "ms": {
+      "xpath": [
+       1203.5,
+       1174.5,
+       1215.8
+      ],
+      "uiautomator": [
+       1047.1,
+       1031.8,
+       1051.7
+      ]
+     },
+     "median": {
+      "xpath": 1203.5,
+      "uiautomator": 1047.1
+     }
+    },
+    {
+     "id": "S09-end",
+     "shape": 9,
+     "position": "end",
+     "locators": {
+      "xpath": "//*[@resource-id=\"io.github.domovou69.scalelab:id/checkout_saveAddress\" and @text=\"Save address\"]",
+      "uiautomator": "new UiSelector().resourceId(\"io.github.domovou69.scalelab:id/checkout_saveAddress\").text(\"Save address\")"
+     },
+     "valid": true,
+     "hit": "android.widget.Button|io.github.domovou69.scalelab:id/checkout_saveAddress|Save address||[0,1788][1080,1857]",
+     "ms": {
+      "xpath": [
+       1251.6,
+       1203.2,
+       1234.1
+      ],
+      "uiautomator": [
+       1042.3,
+       1057.4,
+       1064.2
+      ]
+     },
+     "median": {
+      "xpath": 1234.1,
+      "uiautomator": 1057.4
+     }
+    },
+    {
+     "id": "S10-top",
+     "shape": 10,
+     "position": "top",
+     "locators": {
+      "xpath": "//*[contains(@resource-id,\"deliveryInfo\")]/child::android.widget.TextView[@text=\"Arrives Tue, Oct 14\"]",
+      "uiautomator": "new UiSelector().resourceIdMatches(\".*deliveryInfo.*\").childSelector(new UiSelector().className(\"android.widget.TextView\").text(\"Arrives Tue, Oct 14\"))"
+     },
+     "valid": true,
+     "hit": "android.widget.TextView||Arrives Tue, Oct 14||[0,270][1080,339]",
+     "ms": {
+      "xpath": [
+       1210,
+       1203.9,
+       1202.2
+      ],
+      "uiautomator": [
+       1095,
+       1050.8,
+       1043.5
+      ]
+     },
+     "median": {
+      "xpath": 1203.9,
+      "uiautomator": 1050.8
+     }
+    },
+    {
+     "id": "S10-deep",
+     "shape": 10,
+     "position": "deep",
+     "locators": {
+      "xpath": "//*[contains(@resource-id,\"replyMeta\")]/child::android.widget.TextView[@text=\"Posted 2 days ago\"]",
+      "uiautomator": "new UiSelector().resourceIdMatches(\".*replyMeta.*\").childSelector(new UiSelector().className(\"android.widget.TextView\").text(\"Posted 2 days ago\"))"
+     },
+     "valid": true,
+     "hit": "android.widget.TextView||Posted 2 days ago||[0,822][1080,891]",
+     "ms": {
+      "xpath": [
+       1193.9,
+       1204.4,
+       1226.4
+      ],
+      "uiautomator": [
+       1073.4,
+       1038.2,
+       1073.9
+      ]
+     },
+     "median": {
+      "xpath": 1204.4,
+      "uiautomator": 1073.4
+     }
+    },
+    {
+     "id": "S10-end",
+     "shape": 10,
+     "position": "end",
+     "locators": {
+      "xpath": "//*[contains(@resource-id,\"summary_taxes\")]/child::android.widget.TextView[@text=\"Taxes: $11.02\"]",
+      "uiautomator": "new UiSelector().resourceIdMatches(\".*summary_taxes.*\").childSelector(new UiSelector().className(\"android.widget.TextView\").text(\"Taxes: $11.02\"))"
+     },
+     "valid": true,
+     "hit": "android.widget.TextView||Taxes: $11.02||[0,1926][1080,1995]",
+     "ms": {
+      "xpath": [
+       1189.7,
+       1187.3,
+       1173.9
+      ],
+      "uiautomator": [
+       1096.3,
+       1082.1,
+       1088.9
+      ]
+     },
+     "median": {
+      "xpath": 1187.3,
+      "uiautomator": 1088.9
+     }
+    }
+   ]
+  }
+ ],
+ "date": "2026-10-19",
+ "seconds": 694
+}

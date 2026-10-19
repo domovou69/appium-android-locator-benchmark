@@ -8,6 +8,7 @@
 //   node bench/scale.js --out f.json         another file (relative to results/)
 //   node bench/scale.js --resume             skip the loads already in the output file
 //   node bench/scale.js --loads 100,2000     some loads only
+//   node bench/scale.js --resume --redo --loads 100   run these loads again, replacing them in the output file
 //   node bench/scale.js --count [100,2000]   element count, max depth, target depths and page-source time (3×) per load
 //   node bench/scale.js --deep               the depth check on the depth screen → results/results-scale-deep-emulator.json
 //   node bench/scale.js --allow-debug        run on a debuggable build (its timings are not comparable)
@@ -19,12 +20,12 @@
 // ones. Every timed lookup is one findElement; the strategy order rotates per case and per pass. The
 // result per case and strategy is the median of the passes. Page source is timed once per pass.
 import fs from 'node:fs';
-import { spawn } from 'node:child_process';
+import { spawn, execFileSync } from 'node:child_process';
 import { Session, launch, shape, host, device, adb, median, r1, sleep, PKG, APPIUM } from './lib/wd.js';
 
 const LOADS = [100, 500, 1000, 2000];
 const PASSES = Number(process.env.PASSES || 3);
-const LOAD_MAX = 1.5;
+const LOAD_MAX = 1.5, LOAD_REDO = 3, REDO = 2;
 const MARK = { top: 'nav_help', deep: 'review_helpful', end: 'checkout_placeOrder' };
 // untimed lookup after each app start: the app's content frame, not a target, found without a tree walk
 const READY = ['id', 'android:id/content'];
@@ -40,6 +41,12 @@ const r2 = v => Math.round(v * 100) / 100;
 const geomean = a => Math.exp(a.reduce((s, v) => s + Math.log(v), 0) / a.length);
 const today = () => new Date().toISOString().slice(0, 10);
 const guestLoad = () => Number(adb('shell', 'cat', '/proc/loadavg').split(' ')[0]);
+// The emulator process on the host: its command line, and its CPU time in seconds. macOS can deprioritise
+// it (e.g. while its window is hidden), which slows every lookup with a quiet guest; host CPU per pass shows it.
+const sh = (c, a) => { try { return execFileSync(c, a, { encoding: 'utf8' }).trim(); } catch { return ''; } };
+const QEMU = sh('pgrep', ['-f', 'qemu-system-aarch64']).split('\n')[0] || null;
+const qemuArgs = () => QEMU ? sh('ps', ['-o', 'args=', '-p', QEMU]).replace(/^.*?qemu-system-aarch64\s*/, '') : null;
+const qemuCpuS = () => { const t = QEMU && sh('ps', ['-o', 'time=', '-p', QEMU]); return t ? t.split(':').reduce((a, v) => a * 60 + Number(v), 0) : null; };
 
 function powerOk() {
   const h = host();
@@ -72,7 +79,7 @@ async function env(s) {
   const pkgVersion = p => readJson(new URL(`../node_modules/${p}/package.json`, import.meta.url)).version;
   return {
     appium: pkgVersion('appium'), uiautomator2Driver: pkgVersion('appium-uiautomator2-driver'),
-    uiautomator2Server: s.caps.uiautomator2ServerVersion ?? null, device: device(), app: build(), settings: await s.settings(),
+    uiautomator2Server: adb('shell', 'dumpsys', 'package', 'io.appium.uiautomator2.server').match(/versionName=(\S+)/)?.[1] ?? null, device: device(), emulator: qemuArgs(), app: build(), settings: await s.settings(),
   };
 }
 
@@ -164,22 +171,35 @@ async function runLoad(s, load, cases) {
   }
   const valid = rows.filter(r => r.valid);
   console.log(`  validation: ${valid.length}/${rows.length} cases valid`);
-  const passes = [];
+  // A pass after which the guest's load average is above LOAD_REDO had background work (e.g. Play
+  // services) running during it; it is discarded and run again, up to REDO times.
+  const passes = [], discarded = [];
   for (let pass = 0; pass < PASSES; pass++) {
     powerOk();
-    const p = { guestLoadBefore: guestLoad(), ...(await start(s, { load })), sourceMs: null, errors: 0 };
+    const wait = await waitGuest();
+    const p = { guestLoadBefore: wait.load1, waitedS: wait.waitedS, ...(await start(s, { load })), sourceMs: null, errors: 0 };
+    const got = valid.map(() => ({})), cpu0 = qemuCpuS(), wall0 = performance.now();
     for (const [i, r] of valid.entries()) {
       const sts = Object.keys(r.ms), rot = (i + pass) % sts.length;
       for (const st of [...sts.slice(rot), ...sts.slice(0, rot)]) {
         const f = await s.find(STRATEGIES[st], r.locators[st]);
-        r.ms[st].push(f.error ? null : r1(f.ms));
+        got[i][st] = f.error ? null : r1(f.ms);
         if (f.error) { p.errors++; console.log(`  pass ${pass + 1} ${r.id} ${st}: ${f.error}`); }
       }
     }
+    const cpu1 = qemuCpuS();
+    p.hostQemuCpuPct = cpu0 != null && cpu1 != null ? r1(100 * (cpu1 - cpu0) / ((performance.now() - wall0) / 1000)) : null;
     p.sourceMs = r1((await s.source()).ms);
     p.guestLoadAfter = guestLoad();
+    const line = `host qemu CPU ${p.hostQemuCpuPct} %, ready lookup ${p.readyMs} ms, page source ${p.sourceMs} ms, guest load ${p.guestLoadBefore} → ${p.guestLoadAfter}`;
+    if (p.guestLoadAfter > LOAD_REDO && discarded.length < REDO) {
+      discarded.push({ ...p, ms: Object.fromEntries(valid.map((r, i) => [r.id, got[i]])) });
+      console.log(`  pass ${pass + 1}/${PASSES} discarded (guest load above ${LOAD_REDO}): ${line}`);
+      pass--; continue;
+    }
+    valid.forEach((r, i) => { for (const st of Object.keys(r.ms)) r.ms[st].push(got[i][st]); });
     passes.push(p);
-    console.log(`  pass ${pass + 1}/${PASSES}: ready lookup ${p.readyMs} ms, page source ${p.sourceMs} ms, guest load ${p.guestLoadBefore} → ${p.guestLoadAfter}`);
+    console.log(`  pass ${pass + 1}/${PASSES}: ${line}`);
   }
   for (const r of valid) {
     r.median = Object.fromEntries(Object.entries(r.ms).map(([st, a]) => [st, a.filter(v => v != null)]).filter(([, a]) => a.length).map(([st, a]) => [st, r1(median(a))]));
@@ -187,7 +207,7 @@ async function runLoad(s, load, cases) {
   const summary = summarize(rows);
   for (const [st, v] of Object.entries(summary))
     console.log(`  ${st} vs XPath (${v.cases} cases): ${v.totalMs} vs ${v.xpathTotalMs} ms, saving ${v.savingMs} ms (${v.savingPct} %), ×${v.speedupGeomean} geomean, faster ${v.faster}/${v.cases}`);
-  return { load, host: hostAtStart, guest, firstStart: first, firstSourceMs: r1(sourceMs), ...tree, passes,
+  return { load, host: hostAtStart, guest, firstStart: first, firstSourceMs: r1(sourceMs), ...tree, passes, discardedPasses: discarded,
     sourceMedianMs: r1(median(passes.map(p => p.sourceMs))), summary, cases: rows };
 }
 
@@ -243,6 +263,7 @@ async function main() {
     const doc = args.includes('--resume') && fs.existsSync(out) ? readJson(out) : {
       method: `${PASSES} passes, median; each pass a fresh app start + one untimed ready lookup, then one findElement per case and strategy, strategy order rotating per case and pass`,
       env: await env(s), loads: [] };
+    if (args.includes('--redo')) { doc.loads = doc.loads.filter(r => !loads.includes(r.load)); doc.env = await env(s); }
     const t0 = Date.now();
     for (const load of (loads.length ? loads : LOADS).filter(l => !doc.loads.some(r => r.load === l))) {
       doc.loads.push(await runLoad(s, load, cases));
