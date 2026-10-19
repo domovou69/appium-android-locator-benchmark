@@ -1,8 +1,12 @@
 // Minimal WebDriver client for the Appium server (plain HTTP, no client library), host and device state.
 import { execFileSync, execFile } from 'node:child_process';
+import { existsSync } from 'node:fs';
+import { homedir } from 'node:os';
 
 export const APPIUM = process.env.APPIUM_URL || 'http://127.0.0.1:4723';
-export const ADB = process.env.ANDROID_HOME ? `${process.env.ANDROID_HOME}/platform-tools/adb` : 'adb';
+// Android Studio's default SDK location when ANDROID_HOME is not set (e.g. a non-login shell)
+const SDK = process.env.ANDROID_HOME || [`${homedir()}/Library/Android/sdk`].find(existsSync);
+export const ADB = SDK ? `${SDK}/platform-tools/adb` : 'adb';
 export const PKG = 'io.github.domovou69.scalelab';
 const ELEMENT = 'element-6066-11e4-a52e-4f735466cecf';
 

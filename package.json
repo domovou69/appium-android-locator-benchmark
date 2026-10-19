@@ -10,7 +10,8 @@
   },
   "scripts": {
     "appium": "appium --port 4723",
-    "doctor": "appium driver doctor uiautomator2"
+    "doctor": "appium driver doctor uiautomator2",
+    "scale": "node bench/scale.js"
   },
   "devDependencies": {
     "appium": "3.8.0",
