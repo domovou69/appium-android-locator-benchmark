@@ -60,6 +60,27 @@ emulator already shows no gain or a large one; stages 5–6 then only confirm.
   AVD name and image, all UiAutomator2 settings in effect, host CPU, memory, macOS, power (AC/battery),
   Low Power Mode.
 
+## Sizes and real screens
+
+Element counts are nodes in the UiAutomator2 tree, layout containers included, so a screen has more
+nodes than visible widgets. A typical phone screen is estimated at tens to a few hundred nodes; this
+is an estimate, not a measurement of real apps (that can be added in stage 6).
+
+- **100–500: close to real conditions.** Most phone screens, simple tablet screens. The practical
+  saving is read here (per lookup and per test suite).
+- **1000–2000: stress sizes.** Rare on phones; they show the trend (how the lookup cost and the gain
+  change with size) and keep the sizes comparable with the iOS benchmark.
+
+Where very large trees are expected, because several layers are on screen and visible at once:
+- POS and other kiosk / line-of-business apps (seen in the author's work): several screens drawn at
+  the same time, plus pop-up panels, notifications and side notices on top;
+- back stacks built with `add` instead of `replace` (the previous screens stay in the tree), kept-alive
+  tabs or `ViewPager` pages, an open drawer — the model of the ScaleLab background load;
+- feeds with nested carousels (shop / streaming home screens);
+- tablets: master-detail, dashboards, several panels;
+- tables and grids: month calendars, trading terminals, CRM, warehouse apps;
+- hybrid apps with a `WebView`, whose accessibility tree can reach hundreds to thousands of nodes.
+
 ## Emulator validity check (stage 1)
 
 Question: does the emulator show the real cost difference between strategies, or is it CPU-bound and
@@ -220,3 +241,9 @@ measurements" section.
 11. After the spike (`docs/spike.md`, "Consequences"): background load = overlapping on-screen layers,
     insets-padded content; one untimed lookup after each app start; wait for guest load < 1.5; never on
     battery / Low Power Mode; 3 passes, median; 4 cores only.
+12. Stage 4 (2026-10-19): the benchmark AVD is `AOSP_API_36` (AOSP API 36, no Google services, 4 cores,
+    4 GB), started without a window. On the Play image, Play services background work raised the guest
+    load to 5–9 mid-pass; with a hidden emulator window, macOS deprioritised the emulator (lookups
+    ~6 s instead of ~1 s at 2000 elements). The runner waits for guest load < 1.5 before every pass,
+    discards and repeats a pass that ends with load > 3 (up to 2 times), and records the emulator's host
+    CPU per pass. The Play run is kept for comparison (`results/results-scale-emulator-play.json`).

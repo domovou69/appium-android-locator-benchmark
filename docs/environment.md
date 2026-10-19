@@ -31,24 +31,35 @@ export PATH="$ANDROID_HOME/platform-tools:$ANDROID_HOME/emulator:$JAVA_HOME/bin:
 
 ## AVD
 
-The only AVD used by this project: **`Medium_Phone_API_37.0`** (directory `~/.android/avd/Medium_Phone.avd`).
+Benchmark AVD since 2026-10-19 (stage 4): **`AOSP_API_36`** (directory `~/.android/avd/AOSP_API_36.avd`).
 
-| Setting   | Value                                                          |
-| --------- | -------------------------------------------------------------- |
-| Image     | Google Play, API 37.0, arm64-v8a                               |
-| Build     | `google/sdk_gphone64_arm64/emu64a:17/CE2A.260420.019/15611780` |
-| Screen    | 1080×2400, 420 dpi                                             |
-| CPU cores | 4 (`hw.cpu.ncore`; created with 1)                             |
-| RAM       | 4 GB (`hw.ramSize`; created with 2 GB)                         |
+| Setting   | Value                                                                                        |
+| --------- | -------------------------------------------------------------------------------------------- |
+| Image     | `system-images;android-36;default;arm64-v8a`, revision 2 (AOSP, no Google services), 811 MB |
+| Build     | `Android/sdk_phone64_arm64/emu64a:16/BE2A.250530.026.D1/13818094:userdebug/test-keys`        |
+| Screen    | 1080×2400, 420 dpi                                                                           |
+| CPU cores | 4 (`hw.cpu.ncore`)                                                                           |
+| RAM       | 4 GB (`hw.ramSize`)                                                                          |
 
-The original config is kept as `config.ini.bak-2026-10-18`. Start:
+The SDK has no `cmdline-tools`, so the image was downloaded from
+`https://dl.google.com/android/repository/sys-img/android/arm64-v8a-36_r02.zip` (SHA-1
+`62ad6714df790f89c8a8ad32552ffe20bb16fe87`, from `sys-img2-4.xml`), unpacked to
+`$ANDROID_HOME/system-images/android-36/default/`, and the AVD config copied from `Medium_Phone` with
+the image and tags changed. Start it **without a window** for benchmark runs:
 
 ```sh
-emulator -avd Medium_Phone_API_37.0 -no-snapshot-load -no-boot-anim
+emulator -avd AOSP_API_36 -no-window -no-snapshot-load -no-boot-anim -no-audio
 ```
 
-No AOSP (`default`) image exists for API 37; the fallback is `system-images;android-36;default;arm64-v8a`
-(773 MB), only if stage 1 shows noise from Play services.
+Why: with a window that is hidden or minimised, macOS deprioritises the emulator, and lookups switch
+between ~1 s and ~6 s at 2000 elements with a quiet guest (seen on 2026-10-19). Without a window the
+emulator ran at a steady ~125–140 % host CPU in every pass.
+
+The first AVD, **`Medium_Phone_API_37.0`** (Google Play, API 37.0, build
+`google/sdk_gphone64_arm64/emu64a:17/CE2A.260420.019/15611780`, same screen, 4 cores / 4 GB; original
+config kept as `config.ini.bak-2026-10-18`), is kept. It was dropped for timing: Play services
+background work (`artd` optimizing `com.google.android.gms`) raised the guest load average to 5–9 in the
+middle of passes. Its run is in `results/results-scale-emulator-play.json`.
 
 ## Appium (local devDependencies, exact versions)
 
