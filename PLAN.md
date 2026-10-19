@@ -141,6 +141,15 @@ As built in stage 2 (`ScaleActivity`, `bench/make-scale.js`, `bench/count.js`):
   built the 2000-element screen in up to 15 s and answered first accessibility queries slowly;
 - all 30 cases valid at 100 and 2000 elements: every strategy returns the same single element.
 
+As built in stage 3 (`bench/scale.js`):
+- per load: refuse on battery / Low Power Mode and on a debuggable build, wait for guest load < 1.5,
+  validate, then 3 passes; each pass = fresh app start + one untimed lookup of `android:id/content`,
+  then one `findElement` per case and strategy, order rotating per case and pass; page source once per pass;
+- recorded per load: host power, guest load before/after each pass, start and ready-lookup times;
+  per run: Appium / driver / server versions, device, build type, UiAutomator2 settings;
+- UiSelector uniqueness is validated with `findElement` + `.instance(1)`: with `classNameMatches`,
+  `findElements` (server 10.6.6) drops matches, while `findElement` finds the element.
+
 ## Differences from iOS (to confirm)
 
 1. Up to 4 strategies instead of 2; `id` / `accessibility id` timed only where they apply.

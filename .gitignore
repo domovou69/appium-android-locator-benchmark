@@ -5,3 +5,4 @@ app/.gradle/
 app/build/
 app/.kotlin/
 local.properties
+results/smoke-*.json
