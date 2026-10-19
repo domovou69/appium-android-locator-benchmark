@@ -4,22 +4,22 @@ Recorded 2026-10-18 (stage 0). Every result file also records the versions it ra
 
 ## Host
 
-| Item | Value |
-|---|---|
-| Machine | Apple M1 Pro (8 performance + 2 efficiency cores), 16 GB |
-| macOS | 26.6.2 |
-| Node / npm | 24.21.0 / 12.2.0 |
-| JDK | OpenJDK 25.0.3 bundled with Android Studio (`JAVA_HOME` = `/Applications/Android Studio.app/Contents/jbr/Contents/Home`) |
+| Item       | Value                                                                                                                    |
+| ---------- | ------------------------------------------------------------------------------------------------------------------------ |
+| Machine    | Apple M1 Pro (8 performance + 2 efficiency cores), 16 GB                                                                 |
+| macOS      | 26.6.2                                                                                                                   |
+| Node / npm | 24.21.0 / 12.2.0                                                                                                         |
+| JDK        | OpenJDK 25.0.3 bundled with Android Studio (`JAVA_HOME` = `/Applications/Android Studio.app/Contents/jbr/Contents/Home`) |
 
 ## Android SDK (`~/Library/Android/sdk`, installed by Android Studio)
 
-| Package | Version |
-|---|---|
-| Platform | `android-37.0` (Android 17), revision 2 |
-| Build-tools | 36.0.0 |
-| Platform-tools (`adb`) | 37.0.1 |
-| Emulator | 37.2.12 (build 16428233) |
-| System image | `system-images;android-37.0;google_apis_playstore;arm64-v8a`, revision 6 |
+| Package                | Version                                                                  |
+| ---------------------- | ------------------------------------------------------------------------ |
+| Platform               | `android-37.0` (Android 17), revision 2                                  |
+| Build-tools            | 36.0.0                                                                   |
+| Platform-tools (`adb`) | 37.0.1                                                                   |
+| Emulator               | 37.2.12 (build 16428233)                                                 |
+| System image           | `system-images;android-37.0;google_apis_playstore;arm64-v8a`, revision 6 |
 
 Shell setup (`~/.zshrc`):
 
@@ -33,13 +33,13 @@ export PATH="$ANDROID_HOME/platform-tools:$ANDROID_HOME/emulator:$JAVA_HOME/bin:
 
 The only AVD used by this project: **`Medium_Phone_API_37.0`** (directory `~/.android/avd/Medium_Phone.avd`).
 
-| Setting | Value |
-|---|---|
-| Image | Google Play, API 37.0, arm64-v8a |
-| Build | `google/sdk_gphone64_arm64/emu64a:17/CE2A.260420.019/15611780` |
-| Screen | 1080×2400, 420 dpi |
-| CPU cores | 4 (`hw.cpu.ncore`; created with 1) |
-| RAM | 4 GB (`hw.ramSize`; created with 2 GB) |
+| Setting   | Value                                                          |
+| --------- | -------------------------------------------------------------- |
+| Image     | Google Play, API 37.0, arm64-v8a                               |
+| Build     | `google/sdk_gphone64_arm64/emu64a:17/CE2A.260420.019/15611780` |
+| Screen    | 1080×2400, 420 dpi                                             |
+| CPU cores | 4 (`hw.cpu.ncore`; created with 1)                             |
+| RAM       | 4 GB (`hw.ramSize`; created with 2 GB)                         |
 
 The original config is kept as `config.ini.bak-2026-10-18`. Start:
 
@@ -52,11 +52,11 @@ No AOSP (`default`) image exists for API 37; the fallback is `system-images;andr
 
 ## Appium (local devDependencies, exact versions)
 
-| Package | Version |
-|---|---|
-| `appium` | 3.8.0 |
-| `appium-uiautomator2-driver` | 8.7.0 |
-| UiAutomator2 server on the device (`io.appium.uiautomator2.server`) | 10.6.6 |
+| Package                                                             | Version |
+| ------------------------------------------------------------------- | ------- |
+| `appium`                                                            | 3.8.0   |
+| `appium-uiautomator2-driver`                                        | 8.7.0   |
+| UiAutomator2 server on the device (`io.appium.uiautomator2.server`) | 10.6.6  |
 
 Appium finds the driver in the project's `node_modules`; nothing is installed globally. Appium's
 `postinstall` (auto-install of extensions listed in env vars) is denied in `package.json`
@@ -67,12 +67,12 @@ Start: `npm run appium` (port 4723).
 
 ## App build (`app/`)
 
-| Item | Version |
-|---|---|
-| Gradle (wrapper) | 9.8.1 |
-| Android Gradle Plugin | 9.4.1 (built-in Kotlin) |
-| Kotlin | 2.2.10 (AGP's runtime dependency) |
-| `compileSdk` / `targetSdk` / `minSdk` | 37 / 37 / 26 |
+| Item                                  | Version                           |
+| ------------------------------------- | --------------------------------- |
+| Gradle (wrapper)                      | 9.8.1                             |
+| Android Gradle Plugin                 | 9.4.1 (built-in Kotlin)           |
+| Kotlin                                | 2.2.10 (AGP's runtime dependency) |
+| `compileSdk` / `targetSdk` / `minSdk` | 37 / 37 / 26                      |
 
 No AndroidX, no library dependencies. Benchmark build: `cd app && ./gradlew assembleRelease` (not debuggable, signed with the debug key; `installRelease` installs it). The screen and cases are generated by `node bench/make-scale.js`.
 

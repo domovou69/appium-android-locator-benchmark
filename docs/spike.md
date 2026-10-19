@@ -10,12 +10,12 @@ Verdict: **go**, with the changes listed under "Consequences".
 
 ## 1. What is in the tree (2000 cells, default settings)
 
-| Background load | Elements in page source | Cells in tree | Page source, median |
-|---|---|---|---|
-| Layers stacked on top of each other, all on screen | 2214 | 2000 | 1407 ms |
-| Layers moved off screen (closed drawer, other pages) | 225 | 200 | 144 ms |
-| Layers `INVISIBLE` | 225 | 200 | 157 ms |
-| `ScrollView`, most cells below the fold | 225 | 200 | 359 ms |
+| Background load                                      | Elements in page source | Cells in tree | Page source, median |
+| ---------------------------------------------------- | ----------------------- | ------------- | ------------------- |
+| Layers stacked on top of each other, all on screen   | 2214                    | 2000          | 1407 ms             |
+| Layers moved off screen (closed drawer, other pages) | 225                     | 200           | 144 ms              |
+| Layers `INVISIBLE`                                   | 225                     | 200           | 157 ms              |
+| `ScrollView`, most cells below the fold              | 225                     | 200           | 359 ms              |
 
 Only overlapping on-screen views count (`allowInvisibleElements=false`). The background load must be
 screens stacked with `add` (as a fragment back stack does), a drawer overlay that is open, etc.
@@ -33,12 +33,12 @@ branch of the plan stays inside the limit.
 
 ## 3. Fixed costs
 
-| Request | Median (10×) |
-|---|---|
-| `GET /status` (Appium only, no device) | 0.7 ms |
-| Get one attribute (device round trip) | 8.6 ms |
-| UiSelector miss, 100-cell tree | 52 ms |
-| XPath miss, 100-cell tree | 78 ms |
+| Request                                | Median (10×) |
+| -------------------------------------- | ------------ |
+| `GET /status` (Appium only, no device) | 0.7 ms       |
+| Get one attribute (device round trip)  | 8.6 ms       |
+| UiSelector miss, 100-cell tree         | 52 ms        |
+| XPath miss, 100-cell tree              | 78 ms        |
 
 ## 4. First lookup after an app start
 
@@ -70,14 +70,14 @@ So repeated passes over the same elements are cold in this sense.
 Stability on 10 fresh targets of the last row, each looked up once per fresh app, two rounds;
 medians **without** the first lookup after each launch:
 
-| Run | Cells | XPath | UiSelector | `id` | XPath / UiSelector | Saving |
-|---|---|---|---|---|---|---|
-| 4 cores, guest busy (load 3.7) | 100 | 61 ms | 43 ms | 44 ms | ×1.40 | 17 ms, 28 % |
-| | 2000 | 656 ms | 574 ms | 525 ms | ×1.14 | 82 ms, 12 % |
-| 4 cores, settled guest | 100 | 75 ms | 47 ms | 50 ms | ×1.60 | 28 ms, 37 % |
-| | 2000 | 771 ms | 552 ms | 569 ms | ×1.40 | 219 ms, 28 % |
-| 2 cores, settled guest | 100 | 74 ms | 40 ms | 43 ms | ×1.86 | 34 ms, 46 % |
-| | 2000 | 631 ms | 345 ms | 365 ms | ×1.83 | 286 ms, 45 % |
+| Run                            | Cells | XPath  | UiSelector | `id`   | XPath / UiSelector | Saving       |
+| ------------------------------ | ----- | ------ | ---------- | ------ | ------------------ | ------------ |
+| 4 cores, guest busy (load 3.7) | 100   | 61 ms  | 43 ms      | 44 ms  | ×1.40              | 17 ms, 28 %  |
+|                                | 2000  | 656 ms | 574 ms     | 525 ms | ×1.14              | 82 ms, 12 %  |
+| 4 cores, settled guest         | 100   | 75 ms  | 47 ms      | 50 ms  | ×1.60              | 28 ms, 37 %  |
+|                                | 2000  | 771 ms | 552 ms     | 569 ms | ×1.40              | 219 ms, 28 % |
+| 2 cores, settled guest         | 100   | 74 ms  | 40 ms      | 43 ms  | ×1.86              | 34 ms, 46 %  |
+|                                | 2000  | 631 ms | 345 ms     | 365 ms | ×1.83              | 286 ms, 45 % |
 
 - No core is pinned: per-core busy median 35–65 %, max 76–94 %; the host runs qemu at a median of
   140–200 % of one core out of 10. The lookups are not CPU-bound.
