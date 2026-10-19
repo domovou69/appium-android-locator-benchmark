@@ -179,6 +179,11 @@ As built in stage 5 (2026-10-19, `AOSP_API_36`, headless; `results/results-scale
 - page source per size is not measured again: time (3 passes), element count and target depths are in
   `results/results-scale-emulator.json` (stage 4).
 
+As built in stage 7 (2026-10-20), shortened: `REPORT.md` (results, depth limit, limits),
+`scale-chart.svg` from `bench/make-scale-chart.js`, `README.md` (how to run on your own device). The
+result is clear enough to start the converter (separate repo `xpath-to-uiselector`); the real-phone
+run (stage 6) waits for a phone and will only refine the ms.
+
 ## Differences from iOS (to confirm)
 
 1. Up to 4 strategies instead of 2; `id` / `accessibility id` timed only where they apply.
