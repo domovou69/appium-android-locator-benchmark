@@ -171,6 +171,14 @@ As built in stage 3 (`bench/scale.js`):
 - UiSelector uniqueness is validated with `findElement` + `.instance(1)`: with `classNameMatches`,
   `findElements` (server 10.6.6) drops matches, while `findElement` finds the element.
 
+As built in stage 5 (2026-10-19, `AOSP_API_36`, headless; `results/results-scale-deep-emulator.json`):
+- depth screen: 82 elements, page-source depth 70 (`snapshotMaxDepth`);
+- page source and XPath see markers down to level 60 (source depth 66); from level 65 on XPath finds
+  nothing. UiSelector finds every marker down to 100 (11–22 ms per lookup, XPath 27–38 ms after the
+  first one) — the same split as on the Play image (`docs/spike.md`, section 2);
+- page source per size is not measured again: time (3 passes), element count and target depths are in
+  `results/results-scale-emulator.json` (stage 4).
+
 ## Differences from iOS (to confirm)
 
 1. Up to 4 strategies instead of 2; `id` / `accessibility id` timed only where they apply.
