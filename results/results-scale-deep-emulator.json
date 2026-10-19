@@ -1,0 +1,333 @@
+{
+ "date": "2026-10-19",
+ "env": {
+  "appium": "3.8.0",
+  "uiautomator2Driver": "8.7.0",
+  "uiautomator2Server": "10.6.6",
+  "device": {
+   "model": "Android SDK built for arm64",
+   "android": "16",
+   "sdk": "36",
+   "fingerprint": "Android/sdk_phone64_arm64/emu64a:16/BE2A.250530.026.D1/13818094:userdebug/test-keys",
+   "cores": 4,
+   "avd": "AOSP_API_36"
+  },
+  "emulator": "-headless -avd AOSP_API_36 -no-window -no-snapshot-load -no-boot-anim -no-audio",
+  "app": {
+   "type": "release",
+   "versionName": "0.1"
+  },
+  "settings": {
+   "ignoreUnimportantViews": false,
+   "allowInvisibleElements": false,
+   "includeExtraRenderingInfo": false,
+   "elementResponseAttributes": "name,text",
+   "snapshotMaxDepth": 70,
+   "includeA11yActionsInPageSource": false,
+   "mjpegBilinearFiltering": false,
+   "waitForSelectorTimeout": 10000,
+   "serverPort": 6790,
+   "simpleBoundsCalculation": false,
+   "mapTestTagToResourceId": false,
+   "enableNotificationListener": true,
+   "limitXPathContextScope": true,
+   "includeExtrasInPageSource": false,
+   "deferAccessibilityCacheReset": false,
+   "normalizeTagNames": false,
+   "trackScrollEvents": true,
+   "scrollAcknowledgmentTimeout": 200,
+   "enableTopmostWindowFromActivePackage": false,
+   "enableMultiWindows": false,
+   "useResourcesForOrientationDetection": false,
+   "currentDisplayId": 0,
+   "shouldUseCompactResponses": true,
+   "wakeLockTimeout": 86396189,
+   "shutdownOnPowerDisconnect": true,
+   "mjpegServerPort": 7810,
+   "mjpegScalingFactor": 50,
+   "alwaysTraversableViewClasses": "",
+   "disableIdLocatorAutocompletion": false,
+   "enforceXPath1": false,
+   "actionAcknowledgmentTimeout": 3000,
+   "mjpegServerScreenshotQuality": 50,
+   "keyInjectionDelay": 0,
+   "waitForIdleTimeout": 10000,
+   "mjpegServerFramerate": 10
+  }
+ },
+ "host": {
+  "cpu": "Apple M1 Pro",
+  "memoryGB": 16,
+  "macOS": "26.6.2",
+  "power": "AC",
+  "lowPowerMode": false
+ },
+ "guest": {
+  "load1": 0.05,
+  "waitedS": 0
+ },
+ "elements": 82,
+ "maxDepth": 70,
+ "cases": [
+  {
+   "id": "D5",
+   "marker": 5,
+   "depthInSource": 11,
+   "xpath": {
+    "ms": 216.2,
+    "found": true
+   },
+   "uiautomator": {
+    "ms": 14,
+    "found": true
+   }
+  },
+  {
+   "id": "D10",
+   "marker": 10,
+   "depthInSource": 16,
+   "xpath": {
+    "ms": 37,
+    "found": true
+   },
+   "uiautomator": {
+    "ms": 11.5,
+    "found": true
+   }
+  },
+  {
+   "id": "D15",
+   "marker": 15,
+   "depthInSource": 21,
+   "xpath": {
+    "ms": 35.1,
+    "found": true
+   },
+   "uiautomator": {
+    "ms": 11,
+    "found": true
+   }
+  },
+  {
+   "id": "D20",
+   "marker": 20,
+   "depthInSource": 26,
+   "xpath": {
+    "ms": 30,
+    "found": true
+   },
+   "uiautomator": {
+    "ms": 10.7,
+    "found": true
+   }
+  },
+  {
+   "id": "D25",
+   "marker": 25,
+   "depthInSource": 31,
+   "xpath": {
+    "ms": 31.7,
+    "found": true
+   },
+   "uiautomator": {
+    "ms": 11.2,
+    "found": true
+   }
+  },
+  {
+   "id": "D30",
+   "marker": 30,
+   "depthInSource": 36,
+   "xpath": {
+    "ms": 31.3,
+    "found": true
+   },
+   "uiautomator": {
+    "ms": 14.6,
+    "found": true
+   }
+  },
+  {
+   "id": "D35",
+   "marker": 35,
+   "depthInSource": 41,
+   "xpath": {
+    "ms": 33.3,
+    "found": true
+   },
+   "uiautomator": {
+    "ms": 14.5,
+    "found": true
+   }
+  },
+  {
+   "id": "D40",
+   "marker": 40,
+   "depthInSource": 46,
+   "xpath": {
+    "ms": 30.1,
+    "found": true
+   },
+   "uiautomator": {
+    "ms": 12.2,
+    "found": true
+   }
+  },
+  {
+   "id": "D45",
+   "marker": 45,
+   "depthInSource": 51,
+   "xpath": {
+    "ms": 28.7,
+    "found": true
+   },
+   "uiautomator": {
+    "ms": 13.6,
+    "found": true
+   }
+  },
+  {
+   "id": "D50",
+   "marker": 50,
+   "depthInSource": 56,
+   "xpath": {
+    "ms": 28.7,
+    "found": true
+   },
+   "uiautomator": {
+    "ms": 15.5,
+    "found": true
+   }
+  },
+  {
+   "id": "D55",
+   "marker": 55,
+   "depthInSource": 61,
+   "xpath": {
+    "ms": 30.5,
+    "found": true
+   },
+   "uiautomator": {
+    "ms": 12.8,
+    "found": true
+   }
+  },
+  {
+   "id": "D60",
+   "marker": 60,
+   "depthInSource": 66,
+   "xpath": {
+    "ms": 31.3,
+    "found": true
+   },
+   "uiautomator": {
+    "ms": 14.7,
+    "found": true
+   }
+  },
+  {
+   "id": "D65",
+   "marker": 65,
+   "depthInSource": null,
+   "xpath": {
+    "ms": 33.2,
+    "error": "no such element: An element could not be located on the page using the given search parameters."
+   },
+   "uiautomator": {
+    "ms": 15.2,
+    "found": true
+   }
+  },
+  {
+   "id": "D70",
+   "marker": 70,
+   "depthInSource": null,
+   "xpath": {
+    "ms": 31.7,
+    "error": "no such element: An element could not be located on the page using the given search parameters."
+   },
+   "uiautomator": {
+    "ms": 16.8,
+    "found": true
+   }
+  },
+  {
+   "id": "D75",
+   "marker": 75,
+   "depthInSource": null,
+   "xpath": {
+    "ms": 37.6,
+    "error": "no such element: An element could not be located on the page using the given search parameters."
+   },
+   "uiautomator": {
+    "ms": 17.4,
+    "found": true
+   }
+  },
+  {
+   "id": "D80",
+   "marker": 80,
+   "depthInSource": null,
+   "xpath": {
+    "ms": 27.5,
+    "error": "no such element: An element could not be located on the page using the given search parameters."
+   },
+   "uiautomator": {
+    "ms": 17,
+    "found": true
+   }
+  },
+  {
+   "id": "D85",
+   "marker": 85,
+   "depthInSource": null,
+   "xpath": {
+    "ms": 32.1,
+    "error": "no such element: An element could not be located on the page using the given search parameters."
+   },
+   "uiautomator": {
+    "ms": 18.4,
+    "found": true
+   }
+  },
+  {
+   "id": "D90",
+   "marker": 90,
+   "depthInSource": null,
+   "xpath": {
+    "ms": 29.1,
+    "error": "no such element: An element could not be located on the page using the given search parameters."
+   },
+   "uiautomator": {
+    "ms": 18.8,
+    "found": true
+   }
+  },
+  {
+   "id": "D95",
+   "marker": 95,
+   "depthInSource": null,
+   "xpath": {
+    "ms": 30.2,
+    "error": "no such element: An element could not be located on the page using the given search parameters."
+   },
+   "uiautomator": {
+    "ms": 21.7,
+    "found": true
+   }
+  },
+  {
+   "id": "D100",
+   "marker": 100,
+   "depthInSource": null,
+   "xpath": {
+    "ms": 27,
+    "error": "no such element: An element could not be located on the page using the given search parameters."
+   },
+   "uiautomator": {
+    "ms": 21.9,
+    "found": true
+   }
+  }
+ ]
+}

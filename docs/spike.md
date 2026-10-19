@@ -31,6 +31,11 @@ The app must pad its content by the system-bar insets.
 limited by `snapshotMaxDepth`. This is a functional difference, not only a timing one; the 40-level deep
 branch of the plan stays inside the limit.
 
+Confirmed on AOSP (stage 5, 2026-10-19, `AOSP_API_36`, Android 16, ScaleLab release build,
+`results/results-scale-deep-emulator.json`): page source and XPath see markers down to level 60
+(source depth 66; in ScaleLab marker N sits at source depth N + 6, so marker 65 would be at 71, past
+the limit), XPath finds nothing from level 65 on, and UiSelector finds every marker down to 100.
+
 ## 3. Fixed costs
 
 | Request                                | Median (10×) |
